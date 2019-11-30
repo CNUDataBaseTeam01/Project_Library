@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang>
+
+<head>
+  <title>
+    DB 01조 회원 MyPage
+  </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="mainTP.css" type="text/css">
+
+</head>
+
+<script type="text/javascript">
+
+  function secession() {
+    if(confirm("정말 탈퇴하시겠습니까 ?") == true){
+        alert("탈퇴되었습니다");
+        //main화면으로 이동
+    }
+    else{
+        return ;
+    }
+  }
+</script>
+
+<body>
+  <div>
+    <h1 style="display:inline;">도서관 대여 프로그램</h1>
+    <h2 style="display:inline;">MyPage </h2>
+    <br><br>
+  </div>
+
+  <center>
+    <div style="border:1px solid; padding: 0px 50px 20px 50px; width:60%; height: 180px; margin-bottom:20px;">
+        <h3> 회원정보</h3>
+          <div style="text-align:left;width:50%;">
+        회원 아이디: 라미<br>
+        성명: ♥ ♥ ♥ ♥<br>
+        이메일: 나나@naver.com<br>
+        전화번호: 디노<br>
+        구분: 교수
+      </div>
+    </div>
+  </center>
+
+<center>
+<div>
+  <button onclick="location.href = 'memberLoanList.html'" style="background: #cb99c5; border-radius:10px;">도서대출 목록</button>
+  <button onclick="location.href = 'memberResList.html'" style="background: #cb99c5; border-radius:10px;">도서예약 현황</button>
+  <button onclick="location.href = 'memberInfoModify.html'" style="background: #cb99c5; border-radius:10px;">회원정보수정</button>
+  <button onclick="secession()" style="background: #cb99c5; border-radius:10px;">탈퇴</button>
+</div>
+</center>
+
+
+
+
+</body>
+
+</html>

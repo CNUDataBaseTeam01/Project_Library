@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang>
+
+<head>
+  <title>
+    DB 01조 회원 정보수정
+  </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="mainTP.css" type="text/css">
+
+</head>
+
+<script type="text/javascript">
+  function m_InfoModify() {
+
+    var pwd = document.getElementById("pwd").value;
+    var pwdCheck = document.getElementById("pwdCheck").value;
+
+    if(pwd.length < 6){
+      alert("비밀번호를 다섯자리이상 입력하세요.");
+    }else if (pwd == pwdCheck) {
+      alert("정보 수정이 완료되었습니다.");
+        //화면이동
+    } else {
+      alert("정보 수정에 실패하였습니다.");
+        //화면이동
+    }
+  }
+</script>
+
+<body>
+  <div>
+    <h1 style="display:inline;">도서관 대여 프로그램</h1>
+    <h2 style="display:inline;">회원정보수정 </h2>
+    <br><br>
+  </div>
+
+  <center>
+    <div style="border:1px solid; padding: 20px 50px 20px 50px; width:60%; height: 100px; margin-bottom:20px;   text-align: left;">
+      비밀번호: <br><input id='pwd' type="password" /><br>
+      비밀번호 확인: <br><input id='pwdCheck' type="password" />
+    </div>
+  </center>
+
+  <center>
+    <div>
+      <button onclick="m_InfoModify()" style="background: #cb99c5; border-radius:10px;">정보수정</button>
+    </div>
+  </center>
+
+
+
+
+</body>
+
+</html>

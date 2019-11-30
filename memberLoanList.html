@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang>
+
+<head>
+  <title>
+    DB 01조 회원 대출 목록
+  </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="mainTP.css" type="text/css">
+
+  <style>
+    table {
+      width: 100%;
+      border-top: 1px solid #444444;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    td,
+    th {
+      border-bottom: 1px solid #444444;
+      padding: 10px;
+      text-align: center;
+      /* border: 1px solid #444444; */
+    }
+  </style>
+
+</head>
+
+<script type="text/javascript">
+  function bookReturn() {
+    //if 반납신청을 이미했는지 확인하기
+    alert("반납신청이 완료되었습니다.");
+  }
+</script>
+
+<body>
+  <div>
+    <h1 style="display:inline;">도서관 대여 프로그램</h1>
+    <h2 style="display:inline;">회원 도서대출 목록 </h2>
+    <br><br>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <th>도서제목</th>
+        <th>도서번호</th>
+        <th>대출기간</th>
+        <th>대출일자</th>
+        <th>반납예정일자</th>
+        <th>반납하기</th>
+      </tr>
+      <tr>
+        <td>라미</td>
+        <td>001</td>
+        <td>90일</td>
+        <td>2019.11.30</td>
+        <td>2020.02.29</td>
+        <td><button onclick='bookReturn()'>반납</button></td>
+      </tr>
+    </table>
+  </div>
+
+
+
+
+</body>
+
+</html>
