@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>관리자 : 도서 등록 페이지</title>
+    <link rel="stylesheet" href="bookmanage.css">
+  </head>
+  <body>
+    <h1>도서 등록하기</h1>
+    <form method="post" action="./bookmanage.php" enctype="multipart/form-data">
+    <table id = "bookenrollmentTable">
+      <tr>
+        <th>도서 제목</th>
+        <td><input type="text" name="bookname"/></td>
+      </tr>
+      <tr>
+        <th>저자</th>
+        <td><input type="text" name="bookautor"/></td>
+      </tr>
+      <tr>
+        <th>출판사</th>
+        <td><input type="text"  name="bookpublisher"/></td>
+      </tr>
+      <tr>
+        <th>ISBN </th>
+        <td><input type="text" name="ISBN" ></td>
+      </tr>
+    </table>
+    <p><input type="submit" value="등록하기"/></p>
+  </form>
+  </body>
+</html>

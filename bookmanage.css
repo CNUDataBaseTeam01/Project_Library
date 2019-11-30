@@ -1,0 +1,52 @@
+#bookDeleteTable{
+  height: 100px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+td{
+  border:2px solid black;
+}
+th{
+  border:2px solid black;
+  background: gray;
+}
+h1{
+  text-align: center;
+}
+p{
+  text-align: center;
+}
+
+#bookenrollmentTable{
+  height: 100px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+#bookModifiedTable{
+  height: 100px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+#inputmodifedTable{
+  height: 300px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: lightgray;
+  padding-top: 15px;
+}
+
+.modi{
+  border:0px;
+}

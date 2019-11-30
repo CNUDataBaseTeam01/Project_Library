@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang>
+    <head>
+        <title>
+            회원 회원가입
+        </title>
+        <meta charset = "utf-8">
+  <link rel="stylesheet" href = "member.css" type="text/css">
+  </head>
+    <body>
+        <h1> 회원가입 화면입니다. </h1>
+         <form method="post" action="./memberJoin.php" enctype="multipart/form-data">
+           <div id ="memberJoin">
+           <table id="memberJoinTable">
+             <tr><th>id</th><td><input type="text" name ="memberId"/></td></tr>
+             <tr><th>password</th><td><input type ="password" name ="memberPw"></td></tr>
+             <tr><th>성명</th><td><input type ="text" name ="membername"></td></tr>
+             <tr><th>E-mail</th><td><input type ="text" name ="memberEmail"></td></tr>
+             <tr><th>전화번호</th><td><input type ="password" name ="memberPH"></td></tr>
+             <tr><th>구분</th>
+                 <td id="sort"><select class="membersort" name="memebersort">
+                   <option value="department">학부</option>
+                   <option value="Graduate_school">대학원</option>
+                   <option value="Faculty">교직원</option>
+                 </select>
+                 </td></tr>
+          </table>
+          <br/><input type ="button" value="회원가입" name ="MemberJoinButton" id="MemberJoinButton"><br/>
+          </div>
+         </form>
+    </body>
+</html>
