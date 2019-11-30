@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang>
+
+<head>
+  <title>
+    DB 01조 회원 도서 검색
+  </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="mainTP.css" type="text/css">
+
+  <style>
+    table {
+      width: 100%;
+      border-top: 1px solid #444444;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    td,
+    th {
+      border-bottom: 1px solid #444444;
+      padding: 10px;
+      text-align: center;
+      /* border: 1px solid #444444; */
+    }
+  </style>
+
+</head>
+
+<body>
+  <div>
+    <h1 style="display:inline;">도서관 대여 프로그램</h1>
+    <h2 style="display:inline;">도서검색 </h2>
+  </div>
+
+  <div style="line-height:120%;">
+    <br>
+    <center>
+      <input type="text" placeholder="도서제목 검색" style="width:300px;">
+      <button>검색</button>
+    </center>
+  </div>
+
+  <div style="line-height:50%;"><br>
+    <center>
+      <input type="text" placeholder="ISBN 검색" style="width:300px;">
+      <button>검색</button>
+    </center>
+  </div>
+
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>도서제목</th>
+          <th>ISBN</th>
+          <th>저자</th>
+          <th>출판사</th>
+          <th>버튼</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>라미</td>
+          <td>♥ ♥ ♥</td>
+          <td>나나</td>
+          <td>디노</td>
+          <td><button onclick="location.href = 'bookDetail.html'">상세정보</button></td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+
+</body>
+
+</html>
