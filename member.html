@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang>
+    <head>
+        <title>
+          memeber 로그인
+        </title>
+        <meta charset = "utf-8">
+  <link rel="stylesheet" href = "member.css" type="text/css">
+  </head>
+    <body>
+        <h1> 회원 로그인 화면입니다. </h1>
+         <form method="post" action="./memberLogin.php" enctype="multipart/form-data">
+           <div id ="memberLogin">
+           <table id="loginIn">
+             <tr><th>id</th><td><input type="text" name ="memeberId" id="memeberId"/></td>
+              <td rowspan="2"><input type ="button" value ="Login" name = "MemberLoginButton" id ="MemberLoginButton" /></td></tr>
+             <tr><th>password</th><td><input type ="password" name ="memberPw" id="memberPw"></td></tr>
+          </table>
+          </div>
+         </form>
+         <p id="memberJoinlink"> 회원이 아니신가요?
+              <a href ="memberJoin.html">회원가입 하러가기</a></p>
+    </body>
+</html>
