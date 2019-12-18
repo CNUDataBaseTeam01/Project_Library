@@ -20,7 +20,7 @@
 		id="BookSearchButton"
 		onclick="location.href='manageMemberInfo.jsp?managerid=<%=managerid%>'">
 	<br></br>
-	<input type="button" value="대출 목록 관리" name="MemberLoginButton"
+	<input type="button" value="반납 신청 목록" name="MemberLoginButton"
 		id="MemberLoginButton"
 		onclick="location.href='managerLoanList.jsp?managerid=<%=managerid%>'">
 	<br></br>

@@ -1,6 +1,3 @@
-<%@page import="java.util.Calendar"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*"%>
@@ -48,7 +45,7 @@ td, th {
 <body>
 	<div>
 		<h1 style="display: inline;">도서관 대여 프로그램</h1>
-		<h2 style="display: inline;">회원예약목록</h2>
+		<h2 style="display: inline;">회원대출목록</h2>
 	</div>
 
 	<div>
@@ -60,8 +57,8 @@ td, th {
 					<th>ISBN</th>
 					<th>저자</th>
 					<th>출판사</th>
-					<th>대출가능날짜</th>
-					<th>예약대기번호</th>
+					<th>대출날짜</th>
+					<th>반납예정날짜</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -70,7 +67,7 @@ td, th {
 
 	
 	try {
-			String sql = "select * from reservation where memberid='"+memberid+"'";
+			String sql = "select * from loan where memberid='"+memberid+"'&&returnstate!='done'";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 
@@ -79,81 +76,31 @@ td, th {
 				sql = "select * from book where booknum='"+rs.getString("booknum")+"'";
 				ps = conn.prepareStatement(sql);
 				ResultSet rs2 = ps.executeQuery();
-				String timedate="";
 				
 				if(rs2.next()){
 					sql = "select * from bookInfo where ISBN='"+rs2.getString("ISBN")+"'";
 					ps = conn.prepareStatement(sql);
 					ResultSet rs3 = ps.executeQuery();
 					if(rs3.next()){
-						
-						sql = "select * from reservation where booknum='"+rs2.getString("booknum")+"'";
-						ps = conn.prepareStatement(sql);
-						ResultSet rs4 = ps.executeQuery();
-						int count = 0;
-						int day = 0;
-						
-						while(rs4.next()){
-							sql = "select * from member where memberid='"+rs4.getString("memberid")+"'";
-							ps = conn.prepareStatement(sql);
-							ResultSet rs5 = ps.executeQuery();
-							
-							
-							if(rs5.next()){
-								String position = rs5.getString("position");
-								count++;
-								if((rs4.getString("memberid")).equals("memberid")){
-								break;	
-								}else{
-									switch(position){
-									case "department":
-										day = day + 10;
-										break;
-									case "postgraduate":
-										day = day + 30;
-										break;
-									case "professor":
-										day = day + 60;
-										break;
-										
-									}
-								}
-							}
-				
-							
-						}
-						
-						sql = "select * from loan where booknum='"+rs2.getString("booknum")+"'";
-						ps = conn.prepareStatement(sql);
-						rs4 = ps.executeQuery();
-						
-						if(rs4.next()){
-							
-							SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
-							Calendar cal = Calendar.getInstance();
-							
-							String time1 = rs4.getString("returndate");
-							Date first = format1.parse(time1);
-							cal.setTime(first);
-							
-							cal.add(Calendar.DAY_OF_MONTH,day);
-							timedate=format1.format(cal.getTime());
-						}
 				
 			
 			%>
 				<tr>
 				<%
-						String ISBN = rs2.getString("ISBN");
+				String ISBN = rs2.getString("ISBN");
 					%>
 					<td><%=rs.getString("booknum")%></td>
 					<td><%=rs3.getString("title")%></td>
 					<td><%=rs3.getString("ISBN")%></td>
 					<td><%=rs3.getString("author")%></td>
 					<td><%=rs3.getString("publisher")%></td>
-					<td><%=timedate%></td>
-					<td><%=count%>번째</td>	
-					<td><button onclick="location.href = 'bookDetail.jsp?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">예약취소</button></td>
+					<td><%=rs.getString("loandate")%></td>
+					<td><%=rs.getString("returndate")%></td>
+					<%if((rs.getString("returnstate")).equals("ing")){ %>
+					<td><button onclick="location.href = '../member_book/bookDetail.jsp?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">반납</button></td>
+					<%}else{ %>
+					<td>반납요청중</td>
+					<%} %>
 				</tr>
 				<% 
 				}

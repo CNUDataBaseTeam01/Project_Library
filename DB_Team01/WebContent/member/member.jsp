@@ -6,7 +6,7 @@
 <meta charset="EUC-KR">
 <title>DB 01조 Manage</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="resource/css/manage.css" type="text/css">
+<link rel="stylesheet" href="../resource/css/manage.css" type="text/css">
 </head>
 <body>
 

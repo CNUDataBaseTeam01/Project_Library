@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>관리자 : 도서 등록 페이지</title>
-<link rel="stylesheet" href="resource/css/bookmanage.css">
+<link rel="stylesheet" href="../resource/css/bookmanage.css">
 </head>
 <body>
 	<h1>도서 등록하기</h1>

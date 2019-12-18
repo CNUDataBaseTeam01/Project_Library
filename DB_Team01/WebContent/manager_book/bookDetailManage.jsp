@@ -5,8 +5,7 @@
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*"%>
 <%
-String ISBN = request.getParameter("ISBN");
-String memberid = request.getParameter("memberid");
+	String ISBN = request.getParameter("ISBN");
 
 	Connection conn = null;
 	PreparedStatement ps = null;
@@ -51,7 +50,7 @@ td, th {
 	<div
 		style="border: 1px solid; padding: 30px 50px 20px 50px; height: 120px">
 		<div style="float: left; margin-right: 30px;">
-			<img src="images/book_icon.png" alt="book image" style="">
+			<img src="../images/book_icon.png" alt="book image" style="">
 		</div>
 		<div style="width: 70%; float: left;">
 			<%
@@ -75,7 +74,7 @@ td, th {
 					e.printStackTrace();
 				}
 			%>
-
+			
 		</div>
 	</div>
 
@@ -86,37 +85,30 @@ td, th {
 				<th>도서상태</th>
 				<th>예약대기</th>
 				<th>대출가능날짜</th>
-				<th>버튼</th>
+				<th>삭제</th>
 			</tr>
 				<%
 				try {
-					String sql = "select * from book where ISBN=?";
+					String sql = "select * from book where ISBN=" + ISBN;
 					ps = conn.prepareStatement(sql);
-					ps.setString(1, ISBN);
 					rs = ps.executeQuery();
 					
 					SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
 					Calendar cal = Calendar.getInstance();
 					String time1 = format1.format(cal.getTime());
-					System.out.println(ISBN);
-					
+
 					while (rs.next()) {
 						String booknum = rs.getString("booknum");
-						
 						String sql2 = "select * from loan where booknum='" + booknum+"'";
-						System.out.println(booknum);
+						
 						PreparedStatement ps2 = conn.prepareStatement(sql2);
 						ResultSet rs2 = ps2.executeQuery();
-						
 						boolean ing = false;
-						
 						int day=0;
-						System.out.println(sql2);
 						while(rs2.next()){
-							System.out.println((rs2.getString("returnstate")));
+						
 							if((rs2.getString("returnstate")).equals("done")){	}
 							else{
-								
 								Date first = format1.parse(time1);
 								Date second = format1.parse(rs2.getString("loandate"));
 								
@@ -147,6 +139,7 @@ td, th {
 					
 								}
 								ing = true;
+							
 							}
 						}
 						
@@ -160,7 +153,7 @@ td, th {
 								<td>0명</td>
 								<td><%=time1%></td>
 								<td><button
-										onclick="location.href = 'bookLoanCheck.jsp?booknum=<%=booknum%>&memberid=<%=memberid%>'">대출</button></td>
+										onclick="location.href = 'bookDetailDelete.jsp?booknum=<%=booknum%>'">삭제</button></td>
 							</tr>
 							<%
 						}else{
@@ -193,16 +186,13 @@ td, th {
 							}
 							Calendar time2= cal;
 							time2.add(Calendar.DAY_OF_MONTH,day);
-							System.out.println(day+"일");
 							%>
 							<tr>
 								<td><%=booknum%></td>
 								<td>대출중</td>
 								<td><%=count%>명</td>
 								<td><%=format1.format(time2.getTime())%></td>
-								<td><button
-										onclick="location.href = 'bookReserCheck.jsp?booknum=<%=booknum%>&memberid=<%=memberid%>'">예약</button></td>
-					
+								<td></td>
 							</tr>
 							<%
 						}

@@ -21,7 +21,7 @@
 <head>
 <meta charset="utf-8">
 <title>관리자 : 도서 수정 페이지</title>
-<link rel="stylesheet" href="resource/css/bookmanage.css">
+<link rel="stylesheet" href="../resource/css/bookmanage.css">
 </head>
 <script type="text/javascript">
 

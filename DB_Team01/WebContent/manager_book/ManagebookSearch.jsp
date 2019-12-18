@@ -31,7 +31,7 @@ td, th {
 <script type="text/javascript">
 	function bookIsbn() {
 		String
-		redirectUrl = "main.jsp?idx=0";
+		redirectUrl = "../main.jsp?idx=0";
 		response.sendRedirect(redirectUrl);
 	}
 </script>
