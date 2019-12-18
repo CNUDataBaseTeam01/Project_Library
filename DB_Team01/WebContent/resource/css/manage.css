@@ -1,0 +1,44 @@
+#managerLogin{
+  background-color:#BDBDBD;
+  height: 100px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  border-style: outset;
+  padding-top: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/*
+#managerJoin{
+  background-color:skyblue;
+  height: 200px;
+  width: 300px;
+  text-align: center;
+  margin: 0 auto;
+  border-style: outset;
+  padding-top: 25px;
+  padding-left: 25px;
+} */
+
+h1{
+  text-align: center;
+}
+
+
+#ManagerLoginButton{
+  height: 51px;
+  width: 51px;
+}
+#joinlink{
+  text-align: center;
+}
+#managerJoinButton{
+  width:100px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+th{
+  text-align: left;
+}
