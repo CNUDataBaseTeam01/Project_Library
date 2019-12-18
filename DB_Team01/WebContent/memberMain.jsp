@@ -26,7 +26,7 @@
 		
 		<input type="button" value="예약현황" name="MemberLoginButton"
 		id="MemberLoginButton"
-		onclick="location.href='memberInfo.jsp?memberid=<%=memberid%>'">
+		onclick="location.href='memberReserList.jsp?memberid=<%=memberid%>'">
 
 	<input type="button" value="마이페이지" name="MemberLoginButton"
 		id="MemberLoginButton"
