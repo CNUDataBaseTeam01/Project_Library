@@ -28,7 +28,7 @@
 
 	<input type="button" value="È¸¿ø" name="MemberLoginButton"
 		id="MemberLoginButton"
-		onclick="location.href='vipManager.jsp?managerid=<%=managerid%>'">
+		onclick="location.href='managerCheckMember.jsp?managerid=<%=managerid%>'">
 
 </body>
 </html>
