@@ -21,7 +21,7 @@
 	
 	String managerid = request.getParameter("managerid");
 	String tempdate = request.getParameter("checkVIP");
-	String startdate= tempdate==null?"20190924":tempdate;
+	String startdate= tempdate==null?"20190924":tempdate.replaceAll("-","");
 	System.out.println(managerid);
 	System.out.println(startdate);
 	
@@ -41,7 +41,7 @@
       
       <form action="vipManager.jsp?managerid=<%=managerid %>" method="post">
 
-          날짜입력 <input type="number" name="checkVIP" placeholder="날짜를 입력하세요">
+          날짜입력 <input type="date" name="checkVIP" placeholder="날짜를 입력하세요">
            <input type="submit" name="check" value="확인"> <br><br>
       
 
