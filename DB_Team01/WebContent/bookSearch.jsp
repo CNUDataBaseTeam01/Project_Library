@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 
-
+<%String memberid = request.getParameter("memberid");%>>
 
 <!DOCTYPE html>
 <html>
@@ -42,10 +42,12 @@ td, th {
 		<h2 style="display: inline;">도서검색</h2>
 	</div>
 
+
 	<div style="line-height: 120%;">
 		<br>
 		<center>
 		<form action="TitlebookList.jsp" method="post">
+		<input type="hidden" id= "memberid"name= "memberid" value=<%=memberid%>>
 			<input type="text" id="inputTitle" name="inputTitle"
 				placeholder="도서제목 검색" style="width: 300px;"> <input
 				type="submit" value="검색" name="btnTitle" id="btnTitle" />
@@ -57,6 +59,7 @@ td, th {
 		<br>
 		<center>
 			<form action="ISBNbookList.jsp" method="post">
+			<input type="hidden" id= "memberid"name= "memberid" value=<%=memberid%>>
 				<input type="text" id="inputISBN" name="inputISBN"
 					placeholder="ISBN 검색" style="width: 300px;"> <input
 					type="submit" value="검색" name="btnISBN" id="btnISBN" />
