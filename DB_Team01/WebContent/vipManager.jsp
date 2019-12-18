@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=EUC-KR" 
     pageEncoding="EUC-KR"%>
-    <%@ page import="java.sql.*"%>
+    <%@ page import="java.sql.*, java.util.Date, java.text.SimpleDateFormat"%>
     <%
     
     Connection conn = null;
@@ -21,7 +21,9 @@
 	
 	String managerid = request.getParameter("managerid");
 	String tempdate = request.getParameter("checkVIP");
-	String startdate= tempdate==null?"20190924":tempdate.replaceAll("-","");
+	Date now = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	String startdate= tempdate==null?sdf.format(now).replaceAll("-",""):tempdate.replaceAll("-","");
 	System.out.println(managerid);
 	System.out.println(startdate);
 	
