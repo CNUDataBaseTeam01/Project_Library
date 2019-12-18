@@ -21,7 +21,7 @@
 	
 	String managerid = request.getParameter("managerid");
 	String memberid = request.getParameter("memberid");
-	System.out.println(managerid);
+	System.out.println("In managerMemberInfo : "+ managerid+"/ "+memberid);
 	
 %>
 <!DOCTYPE html>
@@ -79,7 +79,7 @@
     					}%>
 			<tr>
 				<td><%=rs.getString("membername") %></td>
-				<td onclick="location.href='checkInfoDetail.jsp?managerid=<%=managerid%>-<%=rs.getString("memberid")%>'"><%=rs.getString("memberid")%></td>
+				<td onclick="location.href='checkInfoDetail.jsp?managerid=<%=managerid%>&memberid=<%=rs.getString("memberid")%>'"><%=rs.getString("memberid")%></td>
 				<td><%=rs.getString("memberpwd") %></td>
 				<td><%=rs.getString("email") %></td>
 				<td><%=rs.getString("phonenum") %></td>

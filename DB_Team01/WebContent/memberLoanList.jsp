@@ -87,7 +87,7 @@ td, th {
 			%>
 				<tr>
 				<%
-						String ISBN = rs2.getString("ISBN");
+				String ISBN = rs2.getString("ISBN");
 					%>
 					<td><%=rs.getString("booknum")%></td>
 					<td><%=rs3.getString("title")%></td>
