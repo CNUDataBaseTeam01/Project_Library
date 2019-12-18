@@ -39,7 +39,6 @@
 			String rBookpublisher= rs.getString("publisher");
 			String rBookauthor = rs.getString("author");
 		
-
 			if (ISBN.equals(rISBN) && bookname.equals(rBookname)
 					&& bookpublisher.equals(rBookpublisher)&& bookauthor.equals(rBookauthor)) {
 				

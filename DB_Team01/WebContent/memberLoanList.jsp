@@ -45,18 +45,21 @@ td, th {
 <body>
 	<div>
 		<h1 style="display: inline;">도서관 대여 프로그램</h1>
-		<h2 style="display: inline;">도서검색결과</h2>
+		<h2 style="display: inline;">회원대출목록</h2>
 	</div>
 
 	<div>
 		<table>
 			<thead>
 				<tr>
+					<th>도서번호</th>
 					<th>도서제목</th>
 					<th>ISBN</th>
 					<th>저자</th>
 					<th>출판사</th>
-					<th>버튼</th>
+					<th>대출날짜</th>
+					<th>반납예정날짜</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -64,25 +67,45 @@ td, th {
 
 	
 	try {
-		String inputISBN = request.getParameter("inputISBN");
-    	System.out.println(inputISBN);
-			String sql = "select * from bookInfo where ISBN like '%"+inputISBN+"%'";
+			String sql = "select * from loan where memberid='"+memberid+"'&&returnstate!='done'";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while (rs.next()) {%>
+			while (rs.next()) {
+
+				sql = "select * from book where booknum='"+rs.getString("booknum")+"'";
+				ps = conn.prepareStatement(sql);
+				ResultSet rs2 = ps.executeQuery();
+				
+				if(rs2.next()){
+					sql = "select * from bookInfo where ISBN='"+rs2.getString("ISBN")+"'";
+					ps = conn.prepareStatement(sql);
+					ResultSet rs3 = ps.executeQuery();
+					if(rs3.next()){
+				
+			
+			%>
 				<tr>
 				<%
-						String ISBN = rs.getString("ISBN");
+						String ISBN = rs2.getString("ISBN");
 					%>
-					<td><%=rs.getString("ISBN")%></td>
-					<td><%=rs.getString("title")%></td>
-					<td><%=rs.getString("author")%></td>
-					<td><%=rs.getString("publisher")%></td>
-					<td><button onclick="location.href = 'bookDetail.jsp?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">상세정보</button></td>
+					<td><%=rs.getString("booknum")%></td>
+					<td><%=rs3.getString("title")%></td>
+					<td><%=rs3.getString("ISBN")%></td>
+					<td><%=rs3.getString("author")%></td>
+					<td><%=rs3.getString("publisher")%></td>
+					<td><%=rs.getString("loandate")%></td>
+					<td><%=rs.getString("returndate")%></td>
+					<%if((rs.getString("returnstate")).equals("ing")){ %>
+					<td><button onclick="location.href = 'bookDetail.jsp?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">반납</button></td>
+					<%}else{ %>
+					<td>반납요청중</td>
+					<%} %>
 				</tr>
-				<% }
-				
+				<% 
+				}
+				}
+			}
 	
 	} catch (SQLException e) {
 		e.printStackTrace();
