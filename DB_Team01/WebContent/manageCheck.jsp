@@ -31,15 +31,10 @@
 		if (rs.next()) {
 			
 			String managerid = rs.getString("managerid");
-			String managerpwd = rs.getString("managerpwd");;
-
-			if(managerid.equals(id))System.out.println(managerid + ":" + id);
-			if(managerpwd.equals(pwd))System.out.println(managerpwd + ":" + pwd);
-			
-			
+			String managerpwd = rs.getString("managerpwd");
 			
 			if (managerid.equals(id) && managerpwd.equals(pwd)) {
-				String redirectUrl = "main.jsp?id=" + managerid;
+				String redirectUrl = "manageMain.jsp?managerid=" + managerid;
 				response.sendRedirect(redirectUrl);
 			} else {
 				System.out.println("패스워드가 틀렸습니다.");
