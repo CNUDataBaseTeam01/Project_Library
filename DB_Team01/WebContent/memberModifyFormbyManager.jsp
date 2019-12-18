@@ -18,9 +18,7 @@
 		e.printStackTrace();
 	}
 	String managerid = request.getParameter("managerid");
-	System.out.println("%%"+ managerid);
-	String memberid = managerid.split("\\-")[1];
-	managerid = managerid.split("\\-")[0];
+	String memberid = request.getParameter("memberid");
 	System.out.println(memberid+" "+ managerid);
     %>
 <!DOCTYPE html>
@@ -30,8 +28,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	  <h1> 회원정보 변경 화면입니다. </h1>
-       <form method="post" action="memberModifyProbyManager.jsp?managerid=<%=managerid%>-<%=memberid%>">
+	  <h1> <%=memberid %>님 회원정보 변경 화면입니다. </h1>
+       <form method="post" action="memberModifyProbyManager.jsp?managerid=<%=managerid%>&memberid=<%=memberid%>">
            <div id ="memberModify">
            <table id="memberModifyTable">
              <tr><th>id</th><td><%=memberid %></td></tr>

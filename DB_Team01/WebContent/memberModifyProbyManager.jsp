@@ -4,9 +4,7 @@
 <%
 	request.setCharacterEncoding("euc-kr");
 String managerid = request.getParameter("managerid");
-System.out.println("%%"+ managerid);
-String memberid = managerid.split("\\-")[1];
-managerid = managerid.split("\\-")[0];
+String memberid = request.getParameter("memberid");
 System.out.println(memberid+" "+ managerid);
 %>
 

@@ -25,7 +25,6 @@
 		id="BookManageButton"
 		onclick="location.href='bookmanage.jsp?managerid=<%=managerid%>'">
 
-
 	<input type="button" value="È¸¿ø" name="MemberLoginButton"
 		id="MemberLoginButton"
 		onclick="location.href='managerCheckMember.jsp?managerid=<%=managerid%>'">

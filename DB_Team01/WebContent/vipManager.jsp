@@ -26,6 +26,7 @@
 	String startdate= tempdate==null?sdf.format(now).replaceAll("-",""):tempdate.replaceAll("-","");
 	System.out.println(managerid);
 	System.out.println(startdate);
+	
 	String dateforPrint = tempdate==null?sdf.format(now):tempdate;
 	String endDateforPrint = sdf.format(now);
 	
@@ -62,13 +63,16 @@
                 </tr>
 				<% 
             	try{
-            		String sql = "select loan.memberid as Id, member.membername as Name, member.email as Email, member.phonenum as Tel, member.position as Position, loan.loandate as loanDate, count(loan.booknum) as loanNum from loan inner join member using(memberid) group by loan.memberid asc limit 10";
+            		String sql = "select loan.memberid as Id, member.membername as Name, member.email as Email, member.phonenum as Tel,"
+            				+" member.position as Position, loan.loandate as loanDate, count(loan.booknum) as loanNum"
+            				+" from loan inner join member using(memberid) group by loan.memberid order by loanNum desc limit 10";
 
         			ps = conn.prepareStatement(sql);
         			rs = ps.executeQuery();
         			
         			while(rs.next()){
-        				String date = rs.getString("loanDate");
+        				String date = rs.getString("loanDate").split("\\ ")[0].replaceAll("-","");
+        				System.out.println("date : "+date);
         				if(Integer.parseInt(date)>=Integer.parseInt(startdate)){
         					System.out.println(date);
         				
