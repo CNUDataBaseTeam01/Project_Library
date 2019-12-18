@@ -11,9 +11,20 @@
 	String dbPass = "1234";
 
 	Class.forName("com.mysql.jdbc.Driver");
-	conn = DriverManager.getConnection(jdbUrl, dbId, dbPass);
+	try{
+		conn = DriverManager.getConnection(jdbUrl, dbId, dbPass);	
+	}
+	catch(Exception e){
+		e.printStackTrace();
+	}
+	
 	
 	String memberid = request.getParameter("memberid");
+	System.out.println(memberid+" in infoForm");
+	
+%>
+<%!
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -26,9 +37,17 @@
 
 <script type="text/javascript">
 	function secession() {
+		
 		if (confirm("정말 탈퇴하시겠습니까 ?") == true) {
 			alert("탈퇴되었습니다");
-			//main화면으로 이동
+			var memberid2 = "<%=memberid%>";
+			//document.write(memberid2);
+			
+			var redirectUrl = "memberdelete.jsp?memberid="+memberid2;
+			location.href = redirectUrl;
+			//document.write(memberid);
+			//alert("탈퇴되었습니다");
+			
 		} else {
 			return;
 		}
@@ -57,7 +76,9 @@
 		System.out.println("1");
 		
 			String sql = "select * from member where memberid=?";
+			System.out.println(sql.replace('?',' ')+memberid);
 			ps = conn.prepareStatement(sql);
+			
 			ps.setString(1, memberid);
 			rs = ps.executeQuery();
 			if(rs.next()){
@@ -65,6 +86,7 @@
 			System.out.println("2");
 			String position = null;
 			String getposition=rs.getString("position");
+			
 			switch(getposition){
 			case "department":
 				position = "학부";
@@ -78,11 +100,12 @@
 			}
 			System.out.println("3"+position);
 %>
-				회원 아이디: <%=rs.getString("memberid")%><br>  
-				성명: <%=rs.getString("membername")%><br> 
-				이메일: <%=rs.getString("email")%><br> 
-				전화번호: <%=rs.getString("phonenum")%><br> 
-				구분: <%=position%>
+				회원 아이디:
+				<%=rs.getString("memberid")%><br> 성명:
+				<%=rs.getString("membername")%><br> 이메일:
+				<%=rs.getString("email")%><br> 전화번호:
+				<%=rs.getString("phonenum")%><br> 구분:
+				<%=position%>
 				<% 
 			}
 	} catch (SQLException e) {
@@ -97,11 +120,11 @@
 
 	<center>
 		<div>
-			<button onclick="location.href = 'memberLoanList.html'"
+			<button onclick="location.href = 'memberLoanList.jsp?memberid=<%=memberid%>'"
 				style="background: #cb99c5; border-radius: 10px;">도서대출 목록</button>
-			<button onclick="location.href = 'memberResList.html'"
+			<button onclick="location.href = ''memberResList.jsp?memberid=<%=memberid%>'"
 				style="background: #cb99c5; border-radius: 10px;">도서예약 현황</button>
-			<button onclick="location.href = 'memberInfoModify.html'"
+			<button onclick="location.href = 'memberModifyForm.jsp?memberid=<%=memberid%>'"
 				style="background: #cb99c5; border-radius: 10px;">회원정보수정</button>
 			<button onclick="secession()"
 				style="background: #cb99c5; border-radius: 10px;">탈퇴</button>
