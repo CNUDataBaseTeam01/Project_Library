@@ -163,7 +163,7 @@ td, th {
 							rs2 = ps2.executeQuery();
 							int count=0;
 							while(rs2.next()){
-								String sql3="select * from member where memberid=" +rs2.getString("memberid");
+								String sql3="select * from member where memberid='" +rs2.getString("memberid")+"'";
 								PreparedStatement ps3 = conn.prepareStatement(sql3);
 								ResultSet rs3 = ps3.executeQuery();
 								
