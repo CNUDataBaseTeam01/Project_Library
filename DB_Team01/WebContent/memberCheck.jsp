@@ -31,7 +31,7 @@
 		if (rs.next()) {
 			
 			String memberid = rs.getString("memberid");
-			String memberpwd = rs.getString("memberpwd");;
+			String memberpwd = rs.getString("memberpwd");
 
 			if(memberid.equals(id))System.out.println(memberid + ":" + id);
 			if(memberpwd.equals(pwd))System.out.println(memberpwd + ":" + pwd);
