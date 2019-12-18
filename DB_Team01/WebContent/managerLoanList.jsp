@@ -29,23 +29,21 @@
 	String dateforPrint = tempdate==null?sdf.format(now):tempdate;
 	String endDateforPrint = sdf.format(now);
 	
-	
 %>
 <!DOCTYPE html>
 <html>
     <head>
-      <title>대출 이력 Top 10 회원 조회</title>
+      <title>대출 이력 조회</title>
       <meta charset="utf-8">
        
     </head>
     
     
         <body>
-          <h1>대출 이력 Top 10 회원 목록</h1>
+          <h1>대출 이력 조회</h1>
           <h5><%=dateforPrint%> 부터 <%=endDateforPrint %>까지 대출 목록입니다.</h5>
-          
       
-      <form action="vipManager.jsp?managerid=<%=managerid %>" method="post">
+      <form action="managerLoanList.jsp?managerid=<%=managerid %>" method="post">
 
           날짜입력 <input type="date" name="checkVIP" placeholder="날짜를 입력하세요">
            <input type="submit" name="check" value="확인"> <br><br>
@@ -62,7 +60,7 @@
                 </tr>
 				<% 
             	try{
-            		String sql = "select loan.memberid as Id, member.membername as Name, member.email as Email, member.phonenum as Tel, member.position as Position, loan.loandate as loanDate, count(loan.booknum) as loanNum from loan inner join member using(memberid) group by loan.memberid asc limit 10";
+            		String sql = "select loan.memberid as Id, member.membername as Name, member.email as Email, member.phonenum as Tel, member.position as Position, loan.loandate as loanDate, count(loan.booknum) as loanNum from loan inner join member using(memberid) group by loan.memberid";
 
         			ps = conn.prepareStatement(sql);
         			rs = ps.executeQuery();
