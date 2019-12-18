@@ -20,6 +20,13 @@
 		id="BookSearchButton"
 		onclick="location.href='bookSearch.jsp?memberid=<%=memberid%>'">
 
+<input type="button" value="대출현황" name="MemberLoginButton"
+		id="MemberLoginButton"
+		onclick="location.href='memberLoanList.jsp?memberid=<%=memberid%>'">
+		
+		<input type="button" value="예약현황" name="MemberLoginButton"
+		id="MemberLoginButton"
+		onclick="location.href='memberInfo.jsp?memberid=<%=memberid%>'">
 
 	<input type="button" value="마이페이지" name="MemberLoginButton"
 		id="MemberLoginButton"

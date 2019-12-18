@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 
-<%String memberid = request.getParameter("memberid");%>>
+<%String memberid = request.getParameter("memberid");%>
 
 <!DOCTYPE html>
 <html>

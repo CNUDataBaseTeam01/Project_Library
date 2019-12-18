@@ -74,7 +74,7 @@ td, th {
 					e.printStackTrace();
 				}
 			%>
-
+			
 		</div>
 	</div>
 
@@ -99,25 +99,47 @@ td, th {
 
 					while (rs.next()) {
 						String booknum = rs.getString("booknum");
-						String sql2 = "select * from loan where booknum=" + booknum;
+						String sql2 = "select * from loan where booknum='" + booknum+"'";
 						
 						PreparedStatement ps2 = conn.prepareStatement(sql2);
 						ResultSet rs2 = ps2.executeQuery();
 						boolean ing = false;
 						int day=0;
 						while(rs2.next()){
+						
 							if((rs2.getString("returnstate")).equals("done")){	}
 							else{
-								
 								Date first = format1.parse(time1);
 								Date second = format1.parse(rs2.getString("loandate"));
 								
 								long calDate = second.getTime() - first.getTime();
 								long calDateDays = calDate / (24*60*60*1000);
 								calDateDays = Math.abs(calDateDays);
-								
 								day = (int)calDateDays;
+								
+								String sql3="select * from member where memberid='" +rs2.getString("memberid")+"'";
+								PreparedStatement ps3 = conn.prepareStatement(sql3);
+								ResultSet rs3 = ps3.executeQuery();
+								
+								if(rs3.next()){
+									String position = rs3.getString("position");
+								
+								switch(position){
+								case "department":
+									day = 10-day;
+									break;
+								case "postgraduate":
+									day = 30-day;
+									break;
+								case "professor":
+									day = 60-day;
+									break;
+									
+								}
+					
+								}
 								ing = true;
+							
 							}
 						}
 						
@@ -136,7 +158,7 @@ td, th {
 							<%
 						}else{
 							
-							sql2 = "select * from reservation where booknum=" + booknum;
+							sql2 = "select * from reservation where booknum='" + booknum+"'";
 							ps2 = conn.prepareStatement(sql2);
 							rs2 = ps2.executeQuery();
 							int count=0;

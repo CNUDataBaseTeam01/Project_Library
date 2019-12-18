@@ -90,23 +90,30 @@ td, th {
 			</tr>
 				<%
 				try {
-					String sql = "select * from book where ISBN=" + ISBN;
+					String sql = "select * from book where ISBN=?";
 					ps = conn.prepareStatement(sql);
+					ps.setString(1, ISBN);
 					rs = ps.executeQuery();
 					
 					SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
 					Calendar cal = Calendar.getInstance();
 					String time1 = format1.format(cal.getTime());
-
+					System.out.println(ISBN);
+					
 					while (rs.next()) {
 						String booknum = rs.getString("booknum");
-						String sql2 = "select * from loan where booknum=" + booknum;
 						
+						String sql2 = "select * from loan where booknum='" + booknum+"'";
+						System.out.println(booknum);
 						PreparedStatement ps2 = conn.prepareStatement(sql2);
 						ResultSet rs2 = ps2.executeQuery();
+						
 						boolean ing = false;
+						
 						int day=0;
+						System.out.println(sql2);
 						while(rs2.next()){
+							System.out.println((rs2.getString("returnstate")));
 							if((rs2.getString("returnstate")).equals("done")){	}
 							else{
 								
@@ -116,8 +123,29 @@ td, th {
 								long calDate = second.getTime() - first.getTime();
 								long calDateDays = calDate / (24*60*60*1000);
 								calDateDays = Math.abs(calDateDays);
-								
 								day = (int)calDateDays;
+								
+								String sql3="select * from member where memberid='" +rs2.getString("memberid")+"'";
+								PreparedStatement ps3 = conn.prepareStatement(sql3);
+								ResultSet rs3 = ps3.executeQuery();
+								
+								if(rs3.next()){
+									String position = rs3.getString("position");
+								
+								switch(position){
+								case "department":
+									day = 10-day;
+									break;
+								case "postgraduate":
+									day = 30-day;
+									break;
+								case "professor":
+									day = 60-day;
+									break;
+									
+								}
+					
+								}
 								ing = true;
 							}
 						}
@@ -132,12 +160,12 @@ td, th {
 								<td>0명</td>
 								<td><%=time1%></td>
 								<td><button
-										onclick="location.href = 'main.jsp?booknum=<%=booknum%>'">대출</button></td>
+										onclick="location.href = 'bookLoanCheck.jsp?booknum=<%=booknum%>&memberid=<%=memberid%>'">대출</button></td>
 							</tr>
 							<%
 						}else{
 							
-							sql2 = "select * from reservation where booknum=" + booknum;
+							sql2 = "select * from reservation where booknum='" + booknum+"'";
 							ps2 = conn.prepareStatement(sql2);
 							rs2 = ps2.executeQuery();
 							int count=0;
@@ -165,6 +193,7 @@ td, th {
 							}
 							Calendar time2= cal;
 							time2.add(Calendar.DAY_OF_MONTH,day);
+							System.out.println(day+"일");
 							%>
 							<tr>
 								<td><%=booknum%></td>
@@ -172,7 +201,7 @@ td, th {
 								<td><%=count%>명</td>
 								<td><%=format1.format(time2.getTime())%></td>
 								<td><button
-										onclick="location.href = 'main.jsp?booknum=<%=booknum%>'">예약</button></td>
+										onclick="location.href = 'bookLoanCheck.jsp?booknum=<%=booknum%>&memberid=<%=memberid%>'">예약</button></td>
 					
 							</tr>
 							<%
