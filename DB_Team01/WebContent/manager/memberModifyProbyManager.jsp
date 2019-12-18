@@ -39,13 +39,13 @@ System.out.println(memberid+" "+ managerid);
 		pstmt.setString(6,memberid);
 		pstmt.executeUpdate();
 	
-		String redirectUrl = "checkInfoDetail.jsp?managerid="+managerid+"-"+memberid;
+		String redirectUrl = "checkInfoDetail.jsp?managerid="+managerid+"&memberid="+memberid;
 		System.out.println("$$$$$$$$$$"+redirectUrl);
 		response.sendRedirect(redirectUrl);
 		
 	}catch(Exception e){
 		//e.printStackTrace();
-		String redirectUrl = "checkInfoDetail.jsp?managerid="+managerid+"-"+memberid;
+		String redirectUrl = "checkInfoDetail.jsp?managerid="+managerid+"&memberid="+memberid;
 		//alert("정보 변경에 실패했습니다. "+redirectUrl);
 		System.out.println("정보 변경 실패");
 		response.sendRedirect(redirectUrl);

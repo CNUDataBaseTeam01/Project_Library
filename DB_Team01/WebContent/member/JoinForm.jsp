@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv = "Content-Type" content="text/html"; charset="EUC-KR">
 <title>회원 회원가입</title>
-  <link rel="stylesheet" href = "resource/css/member.css" type="text/css">
+  <link rel="stylesheet" href = "../resource/css/member.css" type="text/css">
 </head>
 <body>
 	   <h1> 회원가입 화면입니다. </h1>

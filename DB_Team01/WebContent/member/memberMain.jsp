@@ -18,7 +18,7 @@
 	<h1>member Page</h1>
 	<input type="submit" value="도서검색" name="BookSearchButton"
 		id="BookSearchButton"
-		onclick="location.href='bookSearch.jsp?memberid=<%=memberid%>'">
+		onclick="location.href='../member_book/bookSearch.jsp?memberid=<%=memberid%>'">
 
 <input type="button" value="대출현황" name="MemberLoginButton"
 		id="MemberLoginButton"

@@ -17,12 +17,8 @@
 	catch(Exception e){
 		e.printStackTrace();
 	}
-
-	String managerid = request.getParameter("managerid");
-	System.out.println("%%"+ managerid);
-	String memberid = managerid.split("\\-")[1];
-	managerid = managerid.split("\\-")[0];
-	System.out.println(memberid+" "+ managerid);
+    String memberid = request.getParameter("memberid");
+	System.out.println(memberid);
 	
     %>
 <!DOCTYPE html>
@@ -34,6 +30,7 @@
 <body>
 
 <%
+
 try {
 		String sql = "delete from member where memberid=?";
 		
@@ -41,8 +38,8 @@ try {
 		ps.setString(1, memberid);
 		ps.executeUpdate();
 		
-		String redirectUrl = "manageMemberInfo.jsp?managerid="+managerid;
-		response.sendRedirect(redirectUrl);
+		String resultUrl = "../main.jsp";
+		response.sendRedirect(resultUrl);
 		
 } catch (SQLException e) {
 	e.printStackTrace();

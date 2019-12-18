@@ -8,7 +8,7 @@
             DB 01Á¶ Manage
         </title>
         <meta charset = "utf-8">
-  <link rel="stylesheet" href = "resource/css/manage.css" type="text/css">
+  <link rel="stylesheet" href = "../resource/css/manage.css" type="text/css">
   </head>
     <body>
  

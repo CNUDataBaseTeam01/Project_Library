@@ -12,8 +12,8 @@
     <body>
         <div>
         <h1> 도서관 대여 프로그램 </h1>
-          <a href="manage.jsp" target="_blank">관리자 화면</a><br/>
-          <a href="member.jsp" target="_blank">사용자 화면</a>
+          <a href="./manager/manage.jsp" target="_blank">관리자 화면</a><br/>
+          <a href="./member/member.jsp" target="_blank">사용자 화면</a>
         </div>
     </body>
 </html>
