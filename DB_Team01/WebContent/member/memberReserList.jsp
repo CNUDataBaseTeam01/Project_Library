@@ -105,13 +105,13 @@ td, th {
 										} else {
 											switch (position) {
 											case "department":
-												day = day + 10;
+												day = day + 9;
 												break;
 											case "postgraduate":
-												day = day + 30;
+												day = day + 29;
 												break;
 											case "professor":
-												day = day + 60;
+												day = day + 59;
 												break;
 
 											}

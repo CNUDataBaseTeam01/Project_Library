@@ -40,13 +40,13 @@
 			int day=0;
 			switch(position){
 			case "department":
-				day = 10;
+				day = 9;
 				break;
 			case "postgraduate":
-				day = 30;
+				day = 29;
 				break;
 			case "professor":
-				day = 60;
+				day = 59;
 				break;
 			}
 			System.out.println("3:"+position);
@@ -58,21 +58,20 @@
 			System.out.println("4:"+time1);
 			Calendar time2= cal;
 			time2.add(Calendar.DAY_OF_MONTH,day);
-			System.out.println("5:"+format1.format(time2.getTime()));
 			
 			String sql2 = "insert into loan values(?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps2 = conn.prepareStatement(sql2);
 			ps2.setString(1,booknum);
 			ps2.setString(2,memberid);
-			ps2.setString(3,day+"");
+			ps2.setString(3,(day+1)+"");
 			ps2.setString(4,time1);
-			ps2.setString(5,format1.format(time2.getTime()));
+			ps2.setString(5,format2.format(time2.getTime()));
 			ps2.setString(6,"ing");
 			ps2.executeUpdate();	
 			System.out.println("6");
 			%>
 	<script language=javascript> 
-			 self.window.alert("대출에 성공했습니다.\n대출기간: <%=time1.split(" ")[0]%>~<%=format1.format(time2.getTime())%>(<%=day%>일)");
+			 self.window.alert("대출에 성공했습니다.\n대출기간: <%=time1.split(" ")[0]%>~<%=format1.format(time2.getTime())%>(<%=day+1%>일)");
 			 location.href="javascript:history.go(-2)";
 			 </script>
 <%

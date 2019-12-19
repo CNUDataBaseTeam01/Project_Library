@@ -27,25 +27,6 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbUrl, dbId, dbPass);
 		
-		String sql = "select * from member where memberid=?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, memberid);
-		rs = pstmt.executeQuery();
-		
-		if (rs.next()) {
-			String position = rs.getString("position");
-			int day=0;
-			switch(position){
-			case "department":
-				day = 10;
-				break;
-			case "postgraduate":
-				day = 30;
-				break;
-			case "professor":
-				day = 60;
-				break;
-			}
 			
 			SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 			Calendar cal = Calendar.getInstance();
@@ -63,16 +44,7 @@
 			 location.href="javascript:history.go(-2)";
 			 </script>
 <%
-		}else{
-			%>
-<script language=javascript> 
-					 self.window.alert("예약에 실패했습니다.");
-					 location.href="javascript:history.back()";
-					 </script>
-<%
-		}
-	
-		
+
 	} catch (Exception e) {
 		%>
 <script language=javascript> 

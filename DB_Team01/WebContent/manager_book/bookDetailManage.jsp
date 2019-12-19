@@ -89,7 +89,8 @@ td, th {
 			</tr>
 				<%
 				try {
-					String sql = "select * from book where ISBN=" + ISBN;
+					String sql ="select booknum, ISBN, SUBSTRING_INDEX(booknum,'-',- 1) AS idx from book where ISBN='"+ISBN+"' order by cast(idx as unsigned)";
+					
 					ps = conn.prepareStatement(sql);
 					rs = ps.executeQuery();
 					
@@ -126,13 +127,13 @@ td, th {
 								
 								switch(position){
 								case "department":
-									day = 10-day;
+									day = 9-day;
 									break;
 								case "postgraduate":
-									day = 30-day;
+									day = 29-day;
 									break;
 								case "professor":
-									day = 60-day;
+									day = 59-day;
 									break;
 									
 								}
@@ -172,13 +173,13 @@ td, th {
 									count = count+1;
 									switch(position){
 									case "department":
-										day = day + 10;
+										day = day + 9;
 										break;
 									case "postgraduate":
-										day = day + 30;
+										day = day + 29;
 										break;
 									case "professor":
-										day = day + 60;
+										day = day + 59;
 										break;
 										
 									}
