@@ -32,8 +32,8 @@
 <body>
 
 <%
-try {
-		String forCheck = "select memberid from loan where returnstate like '%ing%' && memberid=?";
+	try {
+		String forCheck = "select memberid from loan where returnstate not like '%done%' && memberid=?";
 		ps = conn.prepareStatement(forCheck);
 		ps.setString(1,memberid);
 		rs = ps.executeQuery();
@@ -54,9 +54,9 @@ try {
 			response.sendRedirect(redirectUrl);	
 		}
 		
-} catch (SQLException e) {
+	} catch (SQLException e) {
 	e.printStackTrace();
-}
+	}
 
   
  %>

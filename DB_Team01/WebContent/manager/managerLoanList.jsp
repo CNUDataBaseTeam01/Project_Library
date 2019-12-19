@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*, java.util.Date, java.text.SimpleDateFormat"%>
 <%
-	String memberid = request.getParameter("memberid");
+	String managerid = request.getParameter("managerid");
 %>
 <%
 	Connection conn = null;
@@ -64,13 +64,15 @@ td, th {
 					<th>´ëÃâ³¯Â¥</th>
 					<th>¹Ý³³¿¹Á¤³¯Â¥</th>
 					<th></th>
+					
 				</tr>
 			</thead>
 			<tbody>
-				<%
+				
 	
-	try {
-			String sql = "select loan.memberid as Id, book.ISBN as ISBN, loan.loandate as loanDate, loan.returndate as returnDate, bookinfo.title as Title,"
+		<%try {
+			/*  ing-> ask·Î °íÄ¡±â */
+			String sql = "select loan.memberid as Id, book.booknum as BookNum, book.ISBN as ISBN, loan.loandate as loanDate, loan.returndate as returnDate, bookinfo.title as Title,"
 					+" bookinfo.author as Author, bookinfo.publisher as Publisher"
 					+" from loan inner join book using(booknum) inner join bookinfo using(ISBN) where loan.returnstate like 'ask'";
 			ps = conn.prepareStatement(sql);
@@ -85,15 +87,13 @@ td, th {
 					<td><%=rs.getString("loanDate").split("\\ ")[0]%></td>
 					<td><%=rs.getString("returnDate").split("\\ ")[0]%></td>
 					<td><button
-							onclick="location.href = 'acceptReturn.jsp?ISBN=<%=rs.getString("ISBN")%>&memberid=<%=memberid%>'">¹Ý³³½ÂÀÎ</button></td>
+							onclick="location.href = 'acceptReturn.jsp?booknum=<%=rs.getString("BookNum")%>&memberid=<%=rs.getString("Id")%>&managerid=<%=managerid %>'">¹Ý³³½ÂÀÎ</button></td>
 				</tr>
-				<% 
-				}
-				
+			<%}
+			
 			}catch (SQLException e) {
 				e.printStackTrace();
-			}
-		     %>
+			}%>
 			</tbody>
 
 		</table>
