@@ -37,6 +37,63 @@
     <head>
       <title>대출 이력 Top 10 회원 조회</title>
       <meta charset="utf-8">
+ 
+<style>
+	table {
+		width: 100%;
+		border-top: 1px solid #444444;
+		border-collapse: collapse;
+		margin-top: 30px;
+		padding: 10px;
+	}
+
+	td{
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
+	/* border: 1px solid #444444; */
+	}
+
+	th {
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
+		background-color: #f2ccc7;
+	/* border: 1px solid #444444; */
+	}
+ 	
+ 	h1,h5{
+ 		margin-left: 15px;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 		padding-left: 10px;
+ 	}
+ 	
+ 	#indate{
+ 		padding-top: 10px;
+ 		text-align: center;
+ 	}
+ 	
+ 	#datesub{
+ 		border: 1px solid black;
+ 		background-color: #f2d7c6;
+ 		padding: 5px;
+ 		font-weight: bold;
+ 		text-align: center;
+ 	}
+ 	
+ 	#plzinputdate{
+ 		 height:27px;
+ 	}
+ 	
+}
+ 	
+ </style> 
+       
+       
        
     </head>
     
@@ -47,12 +104,12 @@
           
       
       <form action="vipManager.jsp?managerid=<%=managerid %>" method="post">
+		<div id ="indate">
+           	날짜입력 <input type="date" name="checkVIP" placeholder="날짜를 입력하세요" id="plzinputdate">
+           <input type="submit" name="check" value="확인" id="datesub"> <br><br>
+        </div>
 
-          날짜입력 <input type="date" name="checkVIP" placeholder="날짜를 입력하세요">
-           <input type="submit" name="check" value="확인"> <br><br>
-      
-
-            <table width = 80% border = 3 cellpadding = 10>
+            <table>
                 <tr>
                     <th>회원명</th>
                     <th>회원아이디</th>

@@ -31,8 +31,56 @@
 <head>
 <title>DB 01조 회원 MyPage</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="mainTP.css" type="text/css">
-
+<style>
+   
+ 	h1{
+ 		margin-left: 15px;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#meminfohead{
+ 		margin: 15px;
+ 	}
+ 	 
+ 	button{
+ 		border: 2px solid black;
+ 		background-color: #cb99c5;
+ 		padding: 5px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 		text-align: center;
+ 		margin-right: 25px;
+ 		width: 110px;
+ 		border-radius: 10px;
+ 	} 
+ 	
+ 	#lookmeminfo{
+ 	 	border: 2px solid;
+ 	 	padding: 0px 50px 20px 50px;
+ 	 	width: 60%;
+ 	 	height: 180px;
+ 	 	margin-bottom: 20px;
+ 	 	text-align: center;
+ 	 	margin: 0 auto;
+ 	 	background-color:#f0daf0; 
+ 	}
+ 	
+ 	#memdetailinfo{
+ 		text-align: left;
+ 		font-weight: bold;
+ 	}
+ 	
+ 	#meminfobtnset{
+ 		text-align: center;
+ 		margin-top: 30px;
+ 	}
+}
+ 	
+</style>
 </head>
 
 <script type="text/javascript">
@@ -55,18 +103,18 @@
 </script>
 
 <body>
-	<div>
+	<div id ="meminfohead">
 		<h1 style="display: inline;">도서관 대여 프로그램</h1>
 		<h2 style="display: inline;">MyPage</h2>
 		<br> <br>
 	</div>
 
 
-	<center>
-		<div
-			style="border: 1px solid; padding: 0px 50px 20px 50px; width: 60%; height: 180px; margin-bottom: 20px;">
+	
+		<div id="lookmeminfo">
+		
 			<h3>회원정보</h3>
-			<div style="text-align: left; width: 50%;">
+			<div id ="memdetailinfo">
 
 
 				<%
@@ -116,17 +164,13 @@
      %>
 			</div>
 		</div>
-	</center>
+	
 
-	<center>
-		<div>
+		<div id = "meminfobtnset">
 			
-			<button onclick="location.href = 'memberModifyForm.jsp?memberid=<%=memberid%>'"
-				style="background: #cb99c5; border-radius: 10px;">회원정보수정</button>
-			<button onclick="secession()"
-				style="background: #cb99c5; border-radius: 10px;">탈퇴</button>
+			<button onclick="location.href = 'memberModifyForm.jsp?memberid=<%=memberid%>'">회원정보수정</button>
+			<button onclick="secession()">탈퇴</button>
 		</div>
-	</center>
 
 
 

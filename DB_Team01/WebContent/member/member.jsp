@@ -6,7 +6,44 @@
 <meta charset="EUC-KR">
 <title>DB 01조 Manage</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../resource/css/manage.css" type="text/css">
+  <style type="text/css">
+ 
+ 	h1{
+ 		margin-bottom: 80px;
+ 		text-align: center;
+ 		background-color: #f2d7c6;
+ 		padding: 25px;
+ 	}
+ 	
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#memloginIn{
+ 		margin: 0 auto;
+ 		background-color: #e0bbb6;
+ 		padding: 35px;
+ 	}
+ 	
+ 	th{
+ 		text-align: left;
+ 	}
+ 	
+ 	#MemberLoginButton{
+ 		padding: 18px;
+ 		background-color: #9996a5;
+ 		font-weight: bold;
+ 		font-size: 15px;
+ 	}
+ 	
+ 	#memberJoinlink{
+ 		text-align: center;
+ 		font-weight: bold;
+ 	}
+ 	
+ </style> 
 </head>
 <body>
 
@@ -43,18 +80,18 @@
    <%	break;
 	}
         }%>
-	<h1>회원 로그인 화면입니다.</h1>
+	<h1>회원 로그인</h1>
 	<form action="memberCheck.jsp" method="post">
 		<div id="memberLogin">
-			<table id="loginIn">
+			<table id="memloginIn">
 				<tr>
-					<th>id</th>
+					<th>Id</th>
 					<td><input type="text" name="memberId" id="memberId" /></td>
 					<td rowspan="2"><input type="submit" value="Login"
 						name="MemberLoginButton" id="MemberLoginButton" /></td>
 				</tr>
 				<tr>
-					<th>password</th>
+					<th>Password</th>
 					<td><input type="password" name="memberPw" id="memberPw"></td>
 				</tr>
 			</table>

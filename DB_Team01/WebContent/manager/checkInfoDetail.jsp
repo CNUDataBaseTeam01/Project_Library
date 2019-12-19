@@ -31,8 +31,52 @@
 <head>
 <title>DB 01조 회원 MyPage</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="mainTP.css" type="text/css">
-
+<style>
+    
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#mameminfohead{
+ 		margin: 15px;
+ 	}
+ 	 
+ 	button{
+ 		border: 2px solid black;
+ 		background-color: #cb99c5;
+ 		padding: 5px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 		text-align: center;
+ 		margin-right: 25px;
+ 		width: 130px;
+ 		border-radius: 10px;
+ 	} 
+ 	
+ 	#mameminfoborder{
+ 	 	border: 2px solid;
+ 	 	padding: 0px 50px 20px 50px;
+ 	 	width: 60%;
+ 	 	height: 180px;
+ 	 	margin-bottom: 20px;
+ 	 	text-align: center;
+ 	 	margin: 0 auto;
+ 	 	background-color:#f0daf0; 
+ 	}
+ 	
+ 	#memlookinfo{
+ 		text-align: left;
+ 		font-weight: bold;
+ 	}
+ 	
+ 	#mamembtnset{
+ 		text-align: center;
+ 		margin-top: 30px;
+ 	}
+}
+ 	
+</style>
 </head>
 
 <script type="text/javascript">
@@ -52,17 +96,15 @@
 	}
 </script>
 <body>
-	<div>
+	<div id ="mameminfohead">
 		<h1 style="display: inline;">도서관 대여 프로그램</h1>
 		<br></br>
 		<h2 style="display: inline;">회원 <%=memberid %>님의 상세 정보</h2>
 		<br> <br>
 	</div>
-	<center>
-		<div
-			style="border: 1px solid; padding: 0px 50px 20px 50px; width: 60%; height: 180px; margin-bottom: 20px;">
+		<div id ="mameminfoborder">
 			<h3>회원정보</h3>
-			<div style="text-align: left; width: 50%;">
+			<div id ="memlookinfo">
 
 
 			<%
@@ -107,22 +149,14 @@
 			%>
 			</div>
 		</div>
-	</center>
-
-	<center>
-		<div>
+	
+		<div id="mamembtnset">
 			<button
-				onclick="location.href = 'manageMemberLoanList.jsp?memberid=<%=memberid%>&managerid=<%=managerid %>'"
-				style="background: #cb99c5; border-radius: 10px;">도서대출 목록</button>
+				onclick="location.href = 'manageMemberLoanList.jsp?memberid=<%=memberid%>&managerid=<%=managerid %>'">도서대출 목록</button>
 			<button
-				onclick="location.href = 'memberModifyFormbyManager.jsp?managerid=<%=managerid%>&memberid=<%=memberid%>'"
-				style="background: #cb99c5; border-radius: 10px;">회원정보수정</button>
-			<button onclick="secession()"
-				style="background: #cb99c5; border-radius: 10px;">탈퇴</button>
+				onclick="location.href = 'memberModifyFormbyManager.jsp?managerid=<%=managerid%>&memberid=<%=memberid%>'">회원정보수정</button>
+			<button onclick="secession()">탈퇴</button>
 		</div>
-	</center>
-
-
 
 </body>
 

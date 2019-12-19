@@ -26,18 +26,57 @@
 <title>DB 01조 회원 도서 검색</title>
 <style>
 table {
-	width: 100%;
-	border-top: 1px solid #444444;
-	border-collapse: collapse;
-	margin-top: 10px;
-}
+		width: 100%;
+		border-top: 1px solid #444444;
+		border-collapse: collapse;
+		margin-top: 30px;
+	}
 
-td, th {
-	border-bottom: 1px solid #444444;
-	padding: 10px;
-	text-align: center;
+	td{
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
 	/* border: 1px solid #444444; */
+	}
+
+	th {
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
+		background-color: #f2ccc7;
+	/* border: 1px solid #444444; */
+	}
+ 	
+ 	h1{
+ 		margin-left: 15px;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#searchhead{
+ 		margin: 15px;
+ 	}
+ 	 
+ 	button{
+ 		border: 2px solid black;
+ 		background-color: #f2d7c6;
+ 		padding: 5px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 		text-align: center;
+ 	} 
+ 	
+ 	#bookinfo{
+ 		border: 2px solid black;
+ 		padding: 30px 50px 20px 50px;
+ 		height: 120px;
+ 		background-color: #e6cce6;
+ 	}
 }
+ 	
 </style>
 </head>
 <body>
@@ -47,8 +86,7 @@ td, th {
 		<br> <br>
 	</div>
 
-	<div
-		style="border: 1px solid; padding: 30px 50px 20px 50px; height: 120px">
+	<div id = "bookinfo">
 		<div style="float: left; margin-right: 30px;">
 			<img src="../images/book_icon.png" alt="book image" style="">
 		</div>

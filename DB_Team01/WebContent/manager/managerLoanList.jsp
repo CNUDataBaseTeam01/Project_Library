@@ -29,20 +29,50 @@
 <link rel="stylesheet" href="mainTP.css" type="text/css">
 
 <style>
-table {
-	width: 100%;
-	border-top: 1px solid #444444;
-	border-collapse: collapse;
-	margin-top: 30px;
-}
+	table {
+		width: 100%;
+		border-top: 1px solid #444444;
+		border-collapse: collapse;
+		margin-top: 30px;
+		padding: 10px;
+	}
 
-td, th {
-	border-bottom: 1px solid #444444;
-	padding: 10px;
-	text-align: center;
+	td{
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
 	/* border: 1px solid #444444; */
+	}
+
+	th {
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
+		background-color: #f2ccc7;
+	/* border: 1px solid #444444; */
+	}
+ 	
+ 	h1,h2{
+ 		margin-left: 15px;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 		padding-left: 10px;
+ 	}
+ 	
+ 	button{
+ 		border: 2px solid black;
+ 		background-color: #f2d7c6;
+ 		padding: 5px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 		text-align: center;
+ 	}
 }
-</style>
+ 	
+ </style> 
 
 </head>
 <body>

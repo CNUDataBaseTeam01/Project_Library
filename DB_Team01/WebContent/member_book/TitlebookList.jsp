@@ -26,25 +26,58 @@ System.out.println(memberid);
 <meta charset="utf-8">
 <link rel="stylesheet" href="mainTP.css" type="text/css">
 
-<style>
-table {
-	width: 100%;
-	border-top: 1px solid #444444;
-	border-collapse: collapse;
-	margin-top: 30px;
-}
 
-td, th {
-	border-bottom: 1px solid #444444;
-	padding: 10px;
-	text-align: center;
+<style>
+	table {
+		width: 100%;
+		border-top: 1px solid #444444;
+		border-collapse: collapse;
+		margin-top: 30px;
+	}
+
+	td{
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
 	/* border: 1px solid #444444; */
+	}
+
+	th {
+		border-bottom: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
+		background-color: #f2ccc7;
+	/* border: 1px solid #444444; */
+	}
+ 	
+ 	h1{
+ 		margin-left: 15px;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#searchlist{
+ 		margin: 15px;
+ 	}
+ 	 
+ 	button{
+ 		border: 2px solid black;
+ 		background-color: #f2d7c6;
+ 		padding: 5px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 		text-align: center;
+ 	} 
 }
+ 	
 </style>
 
 </head>
 <body>
-	<div>
+	<div id ="searchlist">
 		<h1 style="display: inline;">도서관 대여 프로그램</h1>
 		<h2 style="display: inline;">도서검색결과</h2>
 	</div>

@@ -34,13 +34,15 @@
 		ps = conn.prepareStatement(forCheck);
 		ps.setString(1,memberid);
 		rs = ps.executeQuery();
-		if(rs.next()){%>
+		if(rs.next()){
+		%>
 			<script>
 			alert("반납을 완료하지 않은 대출 목록이 있습니다.");
 			var redirectUrl = "memberInfo.jsp?memberid=<%=memberid%>";
 			location.href=redirectUrl;
 			</script>
-		<%}else{	
+		<%
+		}else{	
 			String sql = "delete from member where memberid=?";
 		
 			ps = conn.prepareStatement(sql);
@@ -50,7 +52,8 @@
 			String resultUrl = "../main.jsp";
 			response.sendRedirect(resultUrl);
 		
-	} catch (SQLException e) {
+	}
+	}catch (SQLException e) {
 		e.printStackTrace();
 	}%>
 </body>

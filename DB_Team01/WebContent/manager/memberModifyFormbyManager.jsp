@@ -26,6 +26,59 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+ 
+ 	h1{
+ 		margin-bottom: 50px;
+ 		text-align: center;
+ 		background-color: #f2d7c6;
+ 		padding: 25px;
+ 	}
+ 	#mamemmodisubbtn{
+ 		margin-bottom: 20px;
+ 		border: 2px solid black;
+ 		background-color: #e0bbb6;
+ 		padding: 10px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 		text-align: center;
+ 		width: 100px;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#tocentermodi{
+ 		margin: 0 auto;
+ 		text-align: center;
+ 	}
+ 	
+ 	#memberModifyTable{
+  		height: 100px;
+ 		width: 500px;
+ 		text-align: center;
+	    margin: 0 auto;
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+ 	
+ 	td{
+  		border:2px solid black;
+  		padding: 8px;
+  		background-color: #e8e1eb;
+  		border-collapse: collapse;
+	}
+	th{
+  		border:2px solid black;
+  		background-color: #997799;
+  		padding: 8px;
+  		border-collapse: collapse;
+	}
+	
+	
+ </style>
 </head>
 <body>
 	  <h1> <%=memberid %>님 회원정보 변경 화면입니다. </h1>
@@ -45,7 +98,10 @@
                  </select>
                  </td></tr>
           </table>
-          <br/>	<input type="submit"  value="수정"><br/>
+          <br/>
+          	<div id ="tocentermodi">
+          	<input type="submit"  value="수정" id="mamemmodisubbtn"><br/>
+          	</div>
           </div>
          </form>
 </body>

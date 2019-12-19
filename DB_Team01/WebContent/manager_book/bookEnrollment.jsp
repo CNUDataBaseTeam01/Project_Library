@@ -5,7 +5,59 @@
 <head>
 <meta charset="utf-8">
 <title>관리자 : 도서 등록 페이지</title>
-<link rel="stylesheet" href="../resource/css/bookmanage.css">
+ <style type="text/css">
+ 
+ 	h1{
+ 		margin-bottom: 100px;
+ 		text-align: center;
+ 		background-color: #f2d7c6;
+ 		padding: 25px;
+ 	}
+ 	#entbtn{
+ 		margin-bottom: 20px;
+ 		border: 2px solid black;
+ 		background-color: #e0bbb6;
+ 		padding: 10px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#managebtnset{
+ 		margin: 0 auto;
+ 		text-align: center;
+ 		
+ 	}
+ 	
+ 	#bookenrollmentTable{
+  		height: 100px;
+ 		width: 300px;
+ 		text-align: center;
+	    margin: 0 auto;
+        border: 2px solid black;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+ 	
+ 	td{
+  		border:2px solid black;
+  		padding: 8px;
+  		background-color: #e8e1eb;
+	}
+	th{
+  		border:2px solid black;
+  		background-color: #997799;
+  		padding: 8px;
+  		
+	}
+ 	#ent{
+ 		text-align: center;
+ 	}
+ </style>
 </head>
 <body>
 	<h1>도서 등록하기</h1>
@@ -45,9 +97,9 @@
 
 			</tr>
 		</table>
-		<p>
-			<input type="submit" value="등록하기" />
-		</p>
+		<div id ="ent">
+			<input type="submit" value="등록하기" id ="entbtn"/>
+		</div>
 	</form>
 </body>
 </html>

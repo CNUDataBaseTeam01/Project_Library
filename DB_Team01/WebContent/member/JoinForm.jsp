@@ -5,7 +5,60 @@
 <head>
 <meta http-equiv = "Content-Type" content="text/html"; charset="EUC-KR">
 <title>회원 회원가입</title>
-  <link rel="stylesheet" href = "../resource/css/member.css" type="text/css">
+  <style type="text/css">
+ 
+ 	h1{
+ 		margin-bottom: 50px;
+ 		text-align: center;
+ 		background-color: #f2d7c6;
+ 		padding: 25px;
+ 	}
+ 	
+ 	#joinsubbtn{
+ 		margin-bottom: 20px;
+ 		border: 2px solid black;
+ 		background-color: #e0bbb6;
+ 		padding: 10px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 		text-align: center;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#joinbtnheadset{
+ 		margin: 0 auto;
+ 		text-align: center;
+ 		
+ 	}
+ 	
+ 	#memberJoinTable{
+  		height: 100px;
+ 		width: 500px;
+ 		text-align: center;
+	    margin: 0 auto;
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+ 	
+ 	td{
+  		border:2px solid black;
+  		padding: 8px;
+  		background-color: #e8e1eb;
+  		border-collapse: collapse;
+	}
+	th{
+  		border:2px solid black;
+  		background-color: #997799;
+  		padding: 8px;
+  		border-collapse: collapse;
+	}
+	
+	
+ </style>
 </head>
 <body>
 	   <h1> 회원가입 화면입니다. </h1>
@@ -25,7 +78,10 @@
                  </select>
                  </td></tr>
           </table>
-          <br/>	<input type="submit"  value="회원가입"><br/>
+          <br/>
+          	<div id="joinbtnheadset">
+          	<input type="submit"  value="회원가입" id="joinsubbtn"><br/>
+         	</div>
           </div>
          </form>
 </body>

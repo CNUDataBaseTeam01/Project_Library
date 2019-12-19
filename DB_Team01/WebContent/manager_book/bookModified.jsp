@@ -28,7 +28,79 @@
 <head>
 <meta charset="utf-8">
 <title>관리자 : 도서 수정 페이지</title>
-<link rel="stylesheet" href="../resource/css/bookmanage.css">
+<style type="text/css">
+ 
+ 	h1{
+ 		margin-bottom: 50px;
+ 		text-align: center;
+ 		background-color: #f2d7c6;
+ 		padding: 25px;
+ 	}
+ 	#mot{
+ 		margin-bottom: 20px;
+ 		border: 2px solid black;
+ 		background-color: #e0bbb6;
+ 		padding: 10px;
+ 		font-weight: bold;
+ 		font-size: 16px;
+ 		text-align: center;
+ 	}
+ 	
+ 	body{
+ 		margin: 0 auto;
+ 		background-color: #FFFFF0;
+ 	}
+ 	
+ 	#managebtnset{
+ 		margin: 0 auto;
+ 		text-align: center;
+ 		
+ 	}
+ 	
+ 	#bookModifiedTable{
+  		height: 100px;
+ 		width: 500px;
+ 		text-align: center;
+	    margin: 0 auto;
+        border: 2px solid black;
+        border-collapse: collapse;
+    }
+ 	
+ 	td{
+  		border:2px solid black;
+  		padding: 8px;
+  		background-color: #e8e1eb;
+  		border-collapse: collapse;
+	}
+	th{
+  		border:2px solid black;
+  		background-color: #997799;
+  		padding: 8px;
+  		border-collapse: collapse;
+	}
+	
+	#inputmodifedTable{
+ 		text-align: center;
+	    margin: 0 auto;
+        border: 2px solid black;
+        border-collapse: collapse;
+	}
+	
+	.modi{
+	     border-collapse: collapse;
+	     border-right:none;
+		 border-left:none;
+		 border-top:none;
+         border-bottom:none;
+	}
+	
+ 	p{
+ 		text-align: center;
+ 		margin-bottom: 50px;
+ 	}
+ </style>
+
+
 </head>
 <script type="text/javascript">
   
@@ -123,8 +195,7 @@
          </tr>
        <tr>
          <tr class="modi">
-            <td class="modi"></td>
-            <td class="modi"><input type = "submit" value = "정보수정"/></td>
+            <td class="modi" colspan="2"><input type = "submit" value = "정보수정" id = "mot"/></td>
          </tr>
       </table>
       </form>
