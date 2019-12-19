@@ -90,9 +90,9 @@ td, th {
 			</tr>
 				<%
 				try {
-					String sql = "select * from book where ISBN=?";
+					String sql ="select booknum, ISBN, SUBSTRING_INDEX(booknum,'-',- 1) AS idx from book where ISBN='"+ISBN+"' order by cast(idx as unsigned)";
+					
 					ps = conn.prepareStatement(sql);
-					ps.setString(1, ISBN);
 					rs = ps.executeQuery();
 					
 					SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
@@ -131,7 +131,7 @@ td, th {
 								long calDate = second.getTime() - first.getTime();
 								long calDateDays = calDate / (24*60*60*1000);
 								calDateDays = Math.abs(calDateDays);
-								day = day2 - (int)calDateDays;
+								day = (day2) - (int)calDateDays;
 								ing = true;
 							}
 						}
@@ -165,13 +165,13 @@ td, th {
 									count = count+1;
 									switch(position){
 									case "department":
-										day = day + 10;
+										day = day + 9;
 										break;
 									case "postgraduate":
-										day = day + 30;
+										day = day + 29;
 										break;
 									case "professor":
-										day = day + 60;
+										day = day + 59;
 										break;
 										
 									}

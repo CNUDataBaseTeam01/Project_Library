@@ -63,7 +63,7 @@ try{
 			loanTerm = "60";
 			break;
 		}
-		returnDate = new Date(now.getTime()+ (long)(24*60*60*1000L*(Integer.parseInt(loanTerm))));
+		returnDate = new Date(now.getTime()+ (long)(24*60*60*1000L*(Integer.parseInt(loanTerm)-1)));
 		returnDatetoString = sdf.format(returnDate);
 		
 		ps3 = conn.prepareStatement(nextTo);

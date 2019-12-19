@@ -27,11 +27,17 @@
 		if (rs.next()) {
 
 			
-			sql = "update loan set returnstate = ? where booknum = ? && memberid = ?&&returnstate != 'done'";
+			SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+			Calendar cal = Calendar.getInstance();
+			String time1 = format2.format(cal.getTime());
+			
+			
+			sql = "update loan set returnstate = ?, returndate = ? where booknum = ? && memberid = ?&&returnstate != 'done'";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "ask");
-			pstmt.setString(2, booknum);
-			pstmt.setString(3, memberid);
+			pstmt.setString(2, time1);
+			pstmt.setString(3, booknum);
+			pstmt.setString(4, memberid);
 			pstmt.executeUpdate();
 						
 %>
