@@ -16,7 +16,6 @@
 
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection(jdbUrl, dbId, dbPass);
-
 %>
 <!DOCTYPE html>
 <html>
@@ -57,6 +56,7 @@ td, th {
 					<th>ISBN</th>
 					<th>저자</th>
 					<th>출판사</th>
+					<th>대출기간</th>
 					<th>대출날짜</th>
 					<th>반납예정날짜</th>
 					<th></th>
@@ -64,54 +64,78 @@ td, th {
 			</thead>
 			<tbody>
 				<%
+					try {
+						String sql = "select * from member where memberid='" + memberid + "'";
+						ps = conn.prepareStatement(sql);
+						rs = ps.executeQuery();
+						int day = 0;
+						
+						if (rs.next()) {
+							String position = rs.getString("position");
 
-	
-	try {
-			String sql = "select * from loan where memberid='"+memberid+"'&&returnstate!='done'";
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
+							switch (position) {
+							case "department":
+								day = 10;
+								break;
+							case "postgraduate":
+								day = 30;
+								break;
+							case "professor":
+								day = 60;
+								break;
+							}
+						}
+						
+						sql = "select * from loan where memberid='" + memberid + "'&&returnstate!='done'";
+						ps = conn.prepareStatement(sql);
+						rs = ps.executeQuery();
 
-			while (rs.next()) {
+						while (rs.next()) {
 
-				sql = "select * from book where booknum='"+rs.getString("booknum")+"'";
-				ps = conn.prepareStatement(sql);
-				ResultSet rs2 = ps.executeQuery();
-				
-				if(rs2.next()){
-					sql = "select * from bookInfo where ISBN='"+rs2.getString("ISBN")+"'";
-					ps = conn.prepareStatement(sql);
-					ResultSet rs3 = ps.executeQuery();
-					if(rs3.next()){
-				
-			
-			%>
+							sql = "select * from book where booknum='" + rs.getString("booknum") + "'";
+							ps = conn.prepareStatement(sql);
+							ResultSet rs2 = ps.executeQuery();
+
+							if (rs2.next()) {
+								sql = "select * from bookInfo where ISBN='" + rs2.getString("ISBN") + "'";
+								ps = conn.prepareStatement(sql);
+								ResultSet rs3 = ps.executeQuery();
+								if (rs3.next()) {
+				%>
 				<tr>
-				<%
-				String ISBN = rs2.getString("ISBN");
+					<%
+						String ISBN = rs2.getString("ISBN");
 					%>
 					<td><%=rs.getString("booknum")%></td>
 					<td><%=rs3.getString("title")%></td>
 					<td><%=rs3.getString("ISBN")%></td>
 					<td><%=rs3.getString("author")%></td>
 					<td><%=rs3.getString("publisher")%></td>
+					<td><%=day%>일</td>
 					<td><%=rs.getString("loandate")%></td>
 					<td><%=rs.getString("returndate")%></td>
-					<%if((rs.getString("returnstate")).equals("ing")){ %>
-					<td><button onclick="location.href = '../member_book/bookDetail.jsp?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">반납</button></td>
-					<%}else{ %>
+					<%
+						if ((rs.getString("returnstate")).equals("ing")) {
+					%>
+					<td><button
+							onclick="location.href = '../member_book/bookDetail.jsp?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">반납</button></td>
+					<%
+						} else {
+					%>
 					<td>반납요청중</td>
-					<%} %>
+					<%
+						}
+					%>
 				</tr>
-				<% 
-				}
-				}
-			}
-	
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-      
-     %>
+				<%
+					}
+							}
+						}
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				%>
 
 			</tbody>
 
