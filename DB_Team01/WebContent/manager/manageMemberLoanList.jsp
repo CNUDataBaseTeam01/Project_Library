@@ -64,6 +64,7 @@ td, th {
 					<th>ISBN</th>
 					<th>저자</th>
 					<th>출판사</th>
+					<th>대출기간</th>
 					<th>대출날짜</th>
 					<th>반납예정날짜</th>
 					<th>현재 상태</th>
@@ -74,7 +75,7 @@ td, th {
 				<%
 	
 	try {
-			String sql = "select loan.booknum as bookNum, book.ISBN as ISBN, loan.loandate as loanDate, loan.returndate as returnDate, bookinfo.title as Title,"
+			String sql = "select loan.booknum as bookNum, loan.loanterm as Term, book.ISBN as ISBN, loan.loandate as loanDate, loan.returndate as returnDate, bookinfo.title as Title,"
 					+" bookinfo.author as Author, bookinfo.publisher as Publisher, loan.returnstate as State"
 					+" from loan inner join book using(booknum) inner join bookinfo using(ISBN) where loan.memberid=?";
 			ps = conn.prepareStatement(sql);
@@ -101,6 +102,7 @@ td, th {
 					<td><%=rs.getString("ISBN")%></td>
 					<td><%=rs.getString("Author")%></td>
 					<td><%=rs.getString("Publisher")%></td>
+					<td><%=rs.getString("Term")%></td>
 					<td><%=rs.getString("loanDate").split("\\ ")[0]%></td>
 					<td><%=rs.getString("returnDate").split("\\ ")[0]%></td>
 					<td><%=state %></td>
