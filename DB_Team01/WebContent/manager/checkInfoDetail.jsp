@@ -39,7 +39,7 @@
 	function secession() {
 		
 		if (confirm("Á¤¸» Å»ÅðÇÏ½Ã°Ú½À´Ï±î ?") == true) {
-			alert("Å»ÅðµÇ¾ú½À´Ï´Ù");
+			//alert("Å»ÅðµÇ¾ú½À´Ï´Ù");
 			var memberid2 = "<%=memberid%>";
 			var managerid2 = "<%=managerid%>";
 			//document.write(memberid2);
