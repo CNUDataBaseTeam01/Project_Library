@@ -82,7 +82,7 @@ td, th {
 				ResultSet rs2 = ps.executeQuery();
 				String timedate="";
 				String time1="";
-				String resertime=rs.getString("reserDate").split("@")[0];
+				String resertime=rs.getString("reserDate").split(" ")[0];
 				
 				if(rs2.next()){
 					sql = "select * from bookInfo where ISBN='"+rs2.getString("ISBN")+"'";

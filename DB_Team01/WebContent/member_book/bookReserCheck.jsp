@@ -47,7 +47,7 @@
 				break;
 			}
 			
-			SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd@HH:mm:ss");
+			SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
 			Calendar cal = Calendar.getInstance();
 			String time1 = format1.format(cal.getTime());
 			
