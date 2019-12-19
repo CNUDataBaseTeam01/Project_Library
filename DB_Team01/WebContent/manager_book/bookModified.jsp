@@ -31,18 +31,7 @@
 <link rel="stylesheet" href="../resource/css/bookmanage.css">
 </head>
 <script type="text/javascript">
-  window.onload = free();
-
-  function free(){
-     var bookname = document.getElementById('bookname');
-     var bookauthor = document.getElementById('bookauthor');
-     var bookpublisher = document.getElementById('bookpublisher');
-     var isbn = document.getElementById('ISBN');
-     bookname.reset();
-     bookauthor.reset();
-     bookpublisher.reset();
-     isbn.reset();
-    }
+  
   function secession(idx) {
    alert(idx+" 번을 선택하셨습니다.");
    change(idx);
