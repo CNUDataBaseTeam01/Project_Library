@@ -144,7 +144,7 @@ td, th {
 									break;
 									
 								}
-					
+					System.out.println(day+"일 남았습니다.");
 								}
 								ing = true;
 							}
@@ -191,7 +191,7 @@ td, th {
 									}
 								}
 							}
-							Calendar time2= cal;
+							Calendar time2= Calendar.getInstance();
 							time2.add(Calendar.DAY_OF_MONTH,day);
 							System.out.println(day+"일");
 							%>

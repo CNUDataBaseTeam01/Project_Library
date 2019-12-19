@@ -47,11 +47,9 @@
 				break;
 			}
 			
-			SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+			SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd@HH:mm:ss");
 			Calendar cal = Calendar.getInstance();
 			String time1 = format1.format(cal.getTime());
-			Calendar time2= cal;
-			time2.add(Calendar.DAY_OF_MONTH,day);
 			
 			String sql2 = "insert into reservation values(?, ?, ?)";
 			PreparedStatement ps2 = conn.prepareStatement(sql2);
@@ -60,25 +58,25 @@
 			ps2.setString(3,memberid);
 			ps2.executeUpdate();	
 			%>
-	<script language=javascript> 
+<script language=javascript> 
 			 self.window.alert("예약에 성공했습니다.");
-			 location.href="javascript:history.back()";
+			 location.href="javascript:history.go(-2)";
 			 </script>
 <%
 		}else{
 			%>
-			<script language=javascript> 
+<script language=javascript> 
 					 self.window.alert("예약에 실패했습니다.");
 					 location.href="javascript:history.back()";
 					 </script>
-			<%
+<%
 		}
 	
 		
 	} catch (Exception e) {
 		%>
 <script language=javascript> 
-		 self.window.alert("대출에 실패했습니다.");
+		 self.window.alert("이미 예약하신 책입니다.");
 		 location.href="javascript:history.back()";
 		 </script>
 <%
