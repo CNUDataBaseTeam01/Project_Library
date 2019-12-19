@@ -25,7 +25,7 @@ String managerid = request.getParameter("managerid");
 %>
 <%
 try{
-	String sql = "update loan set returnstate='done' where memberid=? and booknum=?";
+	String sql = "update loan set returnstate='done', returndate='"+today+"' where memberid=? and booknum=?";
 	ps = conn.prepareStatement(sql);
 	ps.setString(1, memberid);
 	ps.setString(2, booknum);
