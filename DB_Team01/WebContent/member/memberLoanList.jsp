@@ -112,13 +112,13 @@ td, th {
 					<td><%=rs3.getString("author")%></td>
 					<td><%=rs3.getString("publisher")%></td>
 					<td><%=day%>¿œ</td>
-					<td><%=rs.getString("loandate")%></td>
+					<td><%=rs.getString("loandate").split(" ")[0]%></td>
 					<td><%=rs.getString("returndate")%></td>
 					<%
 						if ((rs.getString("returnstate")).equals("ing")) {
 					%>
 					<td><button
-							onclick="location.href = '../member_book/bookDetail.jsp?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">π›≥≥</button></td>
+							onclick="location.href = 'memberLoanReturnAsk.jsp?booknum=<%=rs.getString("booknum")%>&memberid=<%=memberid%>'">π›≥≥</button></td>
 					<%
 						} else {
 					%>

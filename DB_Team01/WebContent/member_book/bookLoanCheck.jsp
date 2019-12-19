@@ -52,8 +52,9 @@
 			System.out.println("3:"+position);
 			
 			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
+			SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 			Calendar cal = Calendar.getInstance();
-			String time1 = format1.format(cal.getTime());
+			String time1 = format2.format(cal.getTime());
 			System.out.println("4:"+time1);
 			Calendar time2= cal;
 			time2.add(Calendar.DAY_OF_MONTH,day);
@@ -71,7 +72,7 @@
 			System.out.println("6");
 			%>
 	<script language=javascript> 
-			 self.window.alert("대출에 성공했습니다.\n대출기간: <%=time1%>~<%=format1.format(time2.getTime())%>(<%=day%>일)");
+			 self.window.alert("대출에 성공했습니다.\n대출기간: <%=time1.split(" ")[0]%>~<%=format1.format(time2.getTime())%>(<%=day%>일)");
 			 location.href="javascript:history.go(-2)";
 			 </script>
 <%
