@@ -25,7 +25,9 @@ String managerid = request.getParameter("managerid");
 %>
 <%
 try{
+	
 	String sql = "update loan set returnstate='done', returndate='"+today+"' where memberid=? and booknum=?";
+	System.out.println(sql);
 	ps = conn.prepareStatement(sql);
 	ps.setString(1, memberid);
 	ps.setString(2, booknum);
@@ -79,7 +81,13 @@ try{
 		 location.href=redirectUrl;
 		 </script>
 		 
-		 <%}
+		 <%}else{%>
+			 <script> 
+			 alert("반납을 승인했습니다.");
+			 var redirectUrl="managerLoanList.jsp?managerid=<%=managerid%>"; 
+			 location.href=redirectUrl;
+			 </script>
+		<% }
 	
 }catch(Exception e){
 	e.printStackTrace();
