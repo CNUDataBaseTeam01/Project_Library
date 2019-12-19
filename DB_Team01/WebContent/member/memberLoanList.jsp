@@ -81,17 +81,6 @@ td, th {
 							ps = conn.prepareStatement(sql);
 							ResultSet rs2 = ps.executeQuery();
 
-							SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-							Calendar cal = Calendar.getInstance();
-							String time1 = format1.format(cal.getTime());
-
-							Date first = format1.parse(rs.getString("returndate").split("\\ ")[0]);
-							Date second = format1.parse(rs.getString("loandate").split("\\ ")[0]);
-
-							long calDate = second.getTime() - first.getTime();
-							long calDateDays = calDate / (24 * 60 * 60 * 1000);
-							calDateDays = Math.abs(calDateDays);
-							day = (int) calDateDays;
 
 							if (rs2.next()) {
 								sql = "select * from bookInfo where ISBN='" + rs2.getString("ISBN") + "'";
@@ -108,7 +97,7 @@ td, th {
 					<td><%=rs3.getString("ISBN")%></td>
 					<td><%=rs3.getString("author")%></td>
 					<td><%=rs3.getString("publisher")%></td>
-					<td><%=day%>¿œ</td>
+					<td><%=rs.getString("loanterm")%>¿œ</td>
 					<td><%=rs.getString("loandate").split("\\ ")[0]%></td>
 					<td><%=rs.getString("returndate").split("\\ ")[0]%></td>
 					<%
