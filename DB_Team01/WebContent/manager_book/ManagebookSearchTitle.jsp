@@ -64,17 +64,21 @@ td, th {
 	try {
 		String inputTitle = request.getParameter("inputTitle");
     	System.out.println(inputTitle);
-			String sql = "select * from bookInfo where title like '%"+inputTitle+"%'";
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
+    	String sql = "select * from bookInfo where title like '%"+inputTitle+"%'";
+		ps = conn.prepareStatement(sql);
+		rs = ps.executeQuery();
 
-			while (rs.next()) {%>
+		while (rs.next()) {
+			System.out.println(rs.getString("ISBN"));
+		%>
 				<tr>
-					<%String ISBN = rs.getString("ISBN"); %>
-					<td><%=ISBN%></td>
-					<td><%=rs.getString("title")%></td>
-					<td><%=rs.getString("author")%></td>
-					<td><%=rs.getString("publisher")%></td>
+			<%
+					String ISBN = rs.getString("ISBN");
+				%>
+				<td><%=rs.getString("title")%></td>
+				<td><%=rs.getString("ISBN")%></td>
+				<td><%=rs.getString("author")%></td>
+				<td><%=rs.getString("publisher")%></td>
 						<td><button onclick="location.href = 'bookDetailManage.jsp?ISBN=<%=ISBN%>'">상세정보</button></td>
 				</tr>
 				<% }

@@ -75,8 +75,8 @@ td, th {
 				<%
 						String ISBN = rs.getString("ISBN");
 					%>
-					<td><%=rs.getString("ISBN")%></td>
 					<td><%=rs.getString("title")%></td>
+					<td><%=rs.getString("ISBN")%></td>
 					<td><%=rs.getString("author")%></td>
 					<td><%=rs.getString("publisher")%></td>
 					<td><button onclick="location.href = 'bookDetail.jsp?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">상세정보</button></td>

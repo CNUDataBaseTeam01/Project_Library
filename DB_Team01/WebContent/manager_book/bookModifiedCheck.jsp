@@ -76,7 +76,7 @@
       %>
          <script language=javascript> 
           self.window.alert("수정이 완료되었습니다.");
-          location.href="javascript:history.back()";
+          location.href="javascript:history.go(-2)";
          </script>
       <%
       }
