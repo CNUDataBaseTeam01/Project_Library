@@ -33,14 +33,26 @@
 
 <%
 try {
-		String sql = "delete from member where memberid=?";
-		
-		ps = conn.prepareStatement(sql);
-		ps.setString(1, memberid);
-		ps.executeUpdate();
-		
-		String redirectUrl = "manageMemberInfo.jsp?managerid="+managerid;
-		response.sendRedirect(redirectUrl);
+		String forCheck = "select memberid from loan where returnstate like '%ing%' && memberid=?";
+		ps = conn.prepareStatement(forCheck);
+		ps.setString(1,memberid);
+		rs = ps.executeQuery();
+		if(rs.next()){%>
+			<script>
+			alert("반납을 완료하지 않은 대출 목록이 있습니다.");
+			var redirectUrl = "checkInfoDetail.jsp?managerid=<%=managerid%>&memberid=<%=memberid%>";
+			location.href=redirectUrl;
+			</script>
+		<%}else{
+			String sql = "delete from member where memberid=?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, memberid);
+			ps.executeUpdate();
+			
+			String redirectUrl = "manageMemberInfo.jsp?managerid="+managerid;
+			response.sendRedirect(redirectUrl);	
+		}
 		
 } catch (SQLException e) {
 	e.printStackTrace();
