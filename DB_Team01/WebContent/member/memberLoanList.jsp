@@ -1,3 +1,6 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*"%>
@@ -65,28 +68,10 @@ td, th {
 			<tbody>
 				<%
 					try {
-						String sql = "select * from member where memberid='" + memberid + "'";
-						ps = conn.prepareStatement(sql);
-						rs = ps.executeQuery();
-						int day = 0;
-						
-						if (rs.next()) {
-							String position = rs.getString("position");
 
-							switch (position) {
-							case "department":
-								day = 10;
-								break;
-							case "postgraduate":
-								day = 30;
-								break;
-							case "professor":
-								day = 60;
-								break;
-							}
-						}
-						
-						sql = "select * from loan where memberid='" + memberid + "'&&returnstate!='done'";
+						int day = 0;
+
+						String sql = "select * from loan where memberid='" + memberid + "'&&returnstate!='done'";
 						ps = conn.prepareStatement(sql);
 						rs = ps.executeQuery();
 
@@ -95,6 +80,18 @@ td, th {
 							sql = "select * from book where booknum='" + rs.getString("booknum") + "'";
 							ps = conn.prepareStatement(sql);
 							ResultSet rs2 = ps.executeQuery();
+
+							SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+							Calendar cal = Calendar.getInstance();
+							String time1 = format1.format(cal.getTime());
+
+							Date first = format1.parse(rs.getString("returndate").split("\\ ")[0]);
+							Date second = format1.parse(rs.getString("loandate").split("\\ ")[0]);
+
+							long calDate = second.getTime() - first.getTime();
+							long calDateDays = calDate / (24 * 60 * 60 * 1000);
+							calDateDays = Math.abs(calDateDays);
+							day = (int) calDateDays;
 
 							if (rs2.next()) {
 								sql = "select * from bookInfo where ISBN='" + rs2.getString("ISBN") + "'";
