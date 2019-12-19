@@ -154,7 +154,7 @@ td, th {
 					<td><%=rs3.getString("ISBN")%></td>
 					<td><%=rs3.getString("author")%></td>
 					<td><%=rs3.getString("publisher")%></td>
-					<td><%=resertime%></td>
+					<td><%=resertime.split(" ")[0]%></td>
 					<td><%=timedate%></td>
 					<td><%=count%>번째</td>	
 					<td><button onclick="location.href = 'memberReserCancel.jsp?booknum=<%=rs.getString("booknum")%>&memberid=<%=memberid%>'">예약취소</button></td>

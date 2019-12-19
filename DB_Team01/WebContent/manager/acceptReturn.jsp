@@ -52,13 +52,13 @@ try{
 		
 		switch(rs.getString("Position")){
 		case "department" :
-			loanTerm = "30";
+			loanTerm = "10";
 			break;
 		case "postgraduate":
-			loanTerm = "60";
+			loanTerm = "30";
 			break;
 		case "professor":
-			loanTerm = "90";
+			loanTerm = "60";
 			break;
 		}
 		returnDate = new Date(now.getTime()+ (long)(24*60*60*1000L*(Integer.parseInt(loanTerm))));

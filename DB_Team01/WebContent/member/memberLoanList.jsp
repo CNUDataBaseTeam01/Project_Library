@@ -112,8 +112,8 @@ td, th {
 					<td><%=rs3.getString("author")%></td>
 					<td><%=rs3.getString("publisher")%></td>
 					<td><%=day%>¿œ</td>
-					<td><%=rs.getString("loandate").split(" ")[0]%></td>
-					<td><%=rs.getString("returndate")%></td>
+					<td><%=rs.getString("loandate").split("\\ ")[0]%></td>
+					<td><%=rs.getString("returndate").split("\\ ")[0]%></td>
 					<%
 						if ((rs.getString("returnstate")).equals("ing")) {
 					%>
