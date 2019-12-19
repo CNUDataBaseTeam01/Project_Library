@@ -111,6 +111,7 @@ td, th {
 						boolean ing = false;
 						
 						int day=0;
+						int day2=0;
 						System.out.println(sql2);
 						while(rs2.next()){
 							System.out.println((rs2.getString("returnstate")));
@@ -118,34 +119,19 @@ td, th {
 							else{
 								
 								Date first = format1.parse(time1);
-								Date second = format1.parse(rs2.getString("loandate"));
+								Date second = format1.parse(rs2.getString("loandate").split("\\ ")[0]);
+								Date th = format1.parse(rs2.getString("returndate").split("\\ ")[0]);
+
+								long calDate2 = th.getTime() - second.getTime();
+								long calDateDays2 = calDate2 / (24 * 60 * 60 * 1000);
+								calDateDays2 = Math.abs(calDateDays2);
+								day2 = (int) calDateDays2;
+								
 								
 								long calDate = second.getTime() - first.getTime();
 								long calDateDays = calDate / (24*60*60*1000);
 								calDateDays = Math.abs(calDateDays);
-								day = (int)calDateDays;
-								
-								String sql3="select * from member where memberid='" +rs2.getString("memberid")+"'";
-								PreparedStatement ps3 = conn.prepareStatement(sql3);
-								ResultSet rs3 = ps3.executeQuery();
-								
-								if(rs3.next()){
-									String position = rs3.getString("position");
-								
-								switch(position){
-								case "department":
-									day = 10-day;
-									break;
-								case "postgraduate":
-									day = 30-day;
-									break;
-								case "professor":
-									day = 60-day;
-									break;
-									
-								}
-					System.out.println(day+"일 남았습니다.");
-								}
+								day = day2 - (int)calDateDays;
 								ing = true;
 							}
 						}
