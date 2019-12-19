@@ -25,7 +25,7 @@ String managerid = request.getParameter("managerid");
 %>
 <%
 try{
-	String sql = "update loan set returnstate='done' where memberid=? and booknum=?";
+	String sql = "update loan set returnstate='done', returndate='"+today+"' where memberid=? and booknum=?";
 	ps = conn.prepareStatement(sql);
 	ps.setString(1, memberid);
 	ps.setString(2, booknum);
@@ -52,13 +52,13 @@ try{
 		
 		switch(rs.getString("Position")){
 		case "department" :
-			loanTerm = "30";
+			loanTerm = "10";
 			break;
 		case "postgraduate":
-			loanTerm = "60";
+			loanTerm = "30";
 			break;
 		case "professor":
-			loanTerm = "90";
+			loanTerm = "60";
 			break;
 		}
 		returnDate = new Date(now.getTime()+ (long)(24*60*60*1000L*(Integer.parseInt(loanTerm))));

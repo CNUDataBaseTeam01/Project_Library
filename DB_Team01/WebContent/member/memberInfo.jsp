@@ -120,10 +120,7 @@
 
 	<center>
 		<div>
-			<button onclick="location.href = 'memberLoanList.jsp?memberid=<%=memberid%>'"
-				style="background: #cb99c5; border-radius: 10px;">도서대출 목록</button>
-			<button onclick="location.href = ''memberResList.jsp?memberid=<%=memberid%>'"
-				style="background: #cb99c5; border-radius: 10px;">도서예약 현황</button>
+			
 			<button onclick="location.href = 'memberModifyForm.jsp?memberid=<%=memberid%>'"
 				style="background: #cb99c5; border-radius: 10px;">회원정보수정</button>
 			<button onclick="secession()"
