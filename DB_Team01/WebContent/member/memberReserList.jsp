@@ -19,7 +19,6 @@
 
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection(jdbUrl, dbId, dbPass);
-
 %>
 <!DOCTYPE html>
 <html>
@@ -68,108 +67,100 @@ td, th {
 			</thead>
 			<tbody>
 				<%
-
-	
-	try {
-			String sql = "select * from reservation where memberid='"+memberid+"'";
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
-
-			while (rs.next()) {
-
-				sql = "select * from book where booknum='"+rs.getString("booknum")+"'";
-				ps = conn.prepareStatement(sql);
-				ResultSet rs2 = ps.executeQuery();
-				String timedate="";
-				String time1="";
-				String resertime=rs.getString("reserDate").split(" ")[0];
-				
-				if(rs2.next()){
-					sql = "select * from bookInfo where ISBN='"+rs2.getString("ISBN")+"'";
-					ps = conn.prepareStatement(sql);
-					ResultSet rs3 = ps.executeQuery();
-					if(rs3.next()){
-						
-						sql = "select * from reservation where booknum='"+rs2.getString("booknum")+"'";
+					try {
+						String sql = "select * from reservation where memberid='" + memberid + "'";
 						ps = conn.prepareStatement(sql);
-						ResultSet rs4 = ps.executeQuery();
-						int count = 0;
-						int day = 0;
-						
-						while(rs4.next()){
-							sql = "select * from member where memberid='"+rs4.getString("memberid")+"'";
+						rs = ps.executeQuery();
+
+						while (rs.next()) {
+
+							sql = "select * from book,bookInfo where book.ISBN = bookInfo.ISBN && book.booknum ='"
+									+ rs.getString("booknum") + "'";
+
 							ps = conn.prepareStatement(sql);
-							ResultSet rs5 = ps.executeQuery();
-							
-							
-							if(rs5.next()){
-								String position = rs5.getString("position");
-								count++;
-								if((rs4.getString("memberid")).equals(memberid)){
-								break;	
-								}else{
-									switch(position){
-									case "department":
-										day = day + 10;
-										break;
-									case "postgraduate":
-										day = day + 30;
-										break;
-									case "professor":
-										day = day + 60;
-										break;
-										
+							ResultSet rs2 = ps.executeQuery();
+							String timedate = "";
+							String time1 = "";
+							String resertime = rs.getString("reserDate").split(" ")[0];
+
+							if (rs2.next()) {
+
+								sql = "select * from reservation where booknum='" + rs2.getString("booknum")
+										+ "' order by reserDate ASC";
+								ps = conn.prepareStatement(sql);
+								ResultSet rs4 = ps.executeQuery();
+								int count = 0;
+								int day = 0;
+
+								while (rs4.next()) {
+									sql = "select * from member where memberid='" + rs4.getString("memberid") + "'";
+									ps = conn.prepareStatement(sql);
+									ResultSet rs5 = ps.executeQuery();
+
+									if (rs5.next()) {
+										String position = rs5.getString("position");
+										count++;
+										if ((rs4.getString("memberid")).equals(memberid)) {
+											break;
+										} else {
+											switch (position) {
+											case "department":
+												day = day + 10;
+												break;
+											case "postgraduate":
+												day = day + 30;
+												break;
+											case "professor":
+												day = day + 60;
+												break;
+
+											}
+										}
 									}
+
 								}
-							}
-				
-							
-						}
-						
-						sql = "select * from loan where booknum='"+rs2.getString("booknum")+"'";
-						ps = conn.prepareStatement(sql);
-						rs4 = ps.executeQuery();
-						
-						if(rs4.next()){
-							
-							SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
-							Calendar cal = Calendar.getInstance();
-							
-							time1 = rs4.getString("returndate");
-							Date first = format1.parse(time1);
-							cal.setTime(first);
-							
-							cal.add(Calendar.DAY_OF_MONTH,day);
-							timedate=format1.format(cal.getTime());
-						}
-				
-			
-			%>
+
+								sql = "select * from loan where booknum='" + rs2.getString("booknum") + "'";
+								ps = conn.prepareStatement(sql);
+								rs4 = ps.executeQuery();
+
+								if (rs4.next()) {
+
+									SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+									Calendar cal = Calendar.getInstance();
+
+									time1 = rs4.getString("returndate");
+									Date first = format1.parse(time1);
+									cal.setTime(first);
+
+									cal.add(Calendar.DAY_OF_MONTH, day);
+									timedate = format1.format(cal.getTime());
+								}
+				%>
 				<tr>
-				<%
+					<%
 						String ISBN = rs2.getString("ISBN");
 					%>
 					<td><%=rs.getString("booknum")%></td>
-					<td><%=rs3.getString("title")%></td>
-					<td><%=rs3.getString("ISBN")%></td>
-					<td><%=rs3.getString("author")%></td>
-					<td><%=rs3.getString("publisher")%></td>
-					<td><%=resertime.split(" ")[0]%></td>
+					<td><%=rs2.getString("bookInfo.title")%></td>
+					<td><%=rs2.getString("bookInfo.ISBN")%></td>
+					<td><%=rs2.getString("bookInfo.author")%></td>
+					<td><%=rs2.getString("bookInfo.publisher")%></td>
+					<td><%=resertime.split("\\ ")[0]%></td>
 					<td><%=timedate%></td>
-					<td><%=count%>번째</td>	
-					<td><button onclick="location.href = 'memberReserCancel.jsp?booknum=<%=rs.getString("booknum")%>&memberid=<%=memberid%>'">예약취소</button></td>
+					<td><%=count%>번째</td>
+					<td><button
+							onclick="location.href = 'memberReserCancel.jsp?booknum=<%=rs.getString("booknum")%>&memberid=<%=memberid%>'">예약취소</button></td>
 				</tr>
-				<% 
-				}
-				}
-			}
-			
-	
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-      
-     %>
+				<%
+					}
+
+						}
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				%>
 
 			</tbody>
 
