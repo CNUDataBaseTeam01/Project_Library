@@ -79,7 +79,7 @@
 					%>
 <script language=javascript> 
 					 self.window.alert("도서를 삭제하였습니다.");
-					 location.href="javascript:history.back()";
+					 location.href="javascript:history.go(-2)";
 					 </script>
 <%
 				}else{
