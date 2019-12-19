@@ -71,8 +71,8 @@ td, th {
 					<%
 						String ISBN = rs.getString("ISBN");
 					%>
-					<td><%=ISBN%></td>
 					<td><%=rs.getString("title")%></td>
+					<td><%=ISBN%></td>
 					<td><%=rs.getString("author")%></td>
 					<td><%=rs.getString("publisher")%></td>
 					<td><button
