@@ -60,6 +60,7 @@ td, th {
 					<th>ISBN</th>
 					<th>저자</th>
 					<th>출판사</th>
+					<th>예약한날짜</th>
 					<th>대출가능날짜</th>
 					<th>예약대기번호</th>
 					<th></th>
@@ -80,6 +81,8 @@ td, th {
 				ps = conn.prepareStatement(sql);
 				ResultSet rs2 = ps.executeQuery();
 				String timedate="";
+				String time1="";
+				String resertime=rs.getString("reserDate").split("@")[0];
 				
 				if(rs2.next()){
 					sql = "select * from bookInfo where ISBN='"+rs2.getString("ISBN")+"'";
@@ -102,7 +105,7 @@ td, th {
 							if(rs5.next()){
 								String position = rs5.getString("position");
 								count++;
-								if((rs4.getString("memberid")).equals("memberid")){
+								if((rs4.getString("memberid")).equals(memberid)){
 								break;	
 								}else{
 									switch(position){
@@ -132,7 +135,7 @@ td, th {
 							SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
 							Calendar cal = Calendar.getInstance();
 							
-							String time1 = rs4.getString("returndate");
+							time1 = rs4.getString("returndate");
 							Date first = format1.parse(time1);
 							cal.setTime(first);
 							
@@ -151,9 +154,10 @@ td, th {
 					<td><%=rs3.getString("ISBN")%></td>
 					<td><%=rs3.getString("author")%></td>
 					<td><%=rs3.getString("publisher")%></td>
+					<td><%=resertime%></td>
 					<td><%=timedate%></td>
 					<td><%=count%>번째</td>	
-					<td><button onclick="location.href = '../member_book/bookDetail?ISBN=<%=ISBN%>&memberid=<%=memberid%>'">예약취소</button></td>
+					<td><button onclick="location.href = 'memberReserCancel.jsp?booknum=<%=rs.getString("booknum")%>&memberid=<%=memberid%>'">예약취소</button></td>
 				</tr>
 				<% 
 				}

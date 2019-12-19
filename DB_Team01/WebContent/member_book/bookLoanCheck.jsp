@@ -72,7 +72,7 @@
 			%>
 	<script language=javascript> 
 			 self.window.alert("대출에 성공했습니다.\n대출기간: <%=time1%>~<%=format1.format(time2.getTime())%>(<%=day%>일)");
-			 location.href="javascript:history.back()";
+			 location.href="javascript:history.go(-2)";
 			 </script>
 <%
 		}else{
