@@ -20,14 +20,14 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbUrl, dbId, dbPass);
 
-		String sql = "select * from loan where memberid='" + memberid + "'&&booknum='" + booknum + "'";
+		String sql = "select * from loan where memberid='" + memberid + "'&&returnstate!='done'&&booknum='" + booknum + "'";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 
 		if (rs.next()) {
 
 			
-			sql = "update loan set returnstate = ? where booknum = ? && memberid = ?";
+			sql = "update loan set returnstate = ? where booknum = ? && memberid = ?&&returnstate != 'done'";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "ask");
 			pstmt.setString(2, booknum);
