@@ -21,19 +21,24 @@ conn = DriverManager.getConnection(jdbUrl, dbId, dbPass);
 String booknum = request.getParameter("booknum");
 String memberid = request.getParameter("memberid");
 String managerid = request.getParameter("managerid");
+String loandate = request.getParameter("loandate");
+System.out.println(loandate);
+String idx = request.getParameter("idx");
 
 %>
 <%
 try{
 	
-	String sql = "update loan set returnstate='done', returndate='"+today+"' where memberid=? and booknum=?";
+	System.out.println("acceptReturn");
+	String sql = "update loan set returnstate='done', returndate='"+today+"' where memberid=? and booknum=? and loandate=?";
 	System.out.println(sql);
 	ps = conn.prepareStatement(sql);
 	ps.setString(1, memberid);
 	ps.setString(2, booknum);
+	ps.setString(3, loandate);
 	ps.executeUpdate();
-
 	System.out.println(" select reserve");
+
 	String forNext="select reservation.memberid as Id, member.position as Position from reservation inner join member using (memberid) where booknum=? order by reserDate limit 1";
 	ps = conn.prepareStatement(forNext);
 	ps.setString(1, booknum);
@@ -74,26 +79,40 @@ try{
 		ps3.setString(5, returnDatetoString);
 		ps3.setString(6, "ing");
 		ps3.executeUpdate();
-		%>
+		
+		if(idx.equals("1")){%>
 		<script> 
 		 alert("¹İ³³À» ½ÂÀÎÇß½À´Ï´Ù.");
-		 var redirectUrl="managerLoanList.jsp?managerid=<%=managerid%>"; 
+		 var redirectUrl="manageMemberLoanList.jsp?managerid=<%=managerid%>&memberid=<%=memberid%>"; 
 		 location.href=redirectUrl;
 		 </script>
-		 
-		 <%}else{%>
+		 <%} else{%>
 			 <script> 
 			 alert("¹İ³³À» ½ÂÀÎÇß½À´Ï´Ù.");
 			 var redirectUrl="managerLoanList.jsp?managerid=<%=managerid%>"; 
 			 location.href=redirectUrl;
 			 </script>
-		<% }
+		
+		<%}
+	}else{
+		if(idx.equals("1")){%>
+			 <script> 
+			 alert("¹İ³³À» ½ÂÀÎÇß½À´Ï´Ù.");
+			 var redirectUrl="manageMemberLoanList.jsp?managerid=<%=managerid%>&memberid=<%=memberid%>"; 
+			 location.href=redirectUrl;
+			 </script>
+		<%} else{%>
+			<script> 
+			 alert("¹İ³³À» ½ÂÀÎÇß½À´Ï´Ù.");
+			 var redirectUrl="managerLoanList.jsp?managerid=<%=managerid%>"; 
+			 location.href=redirectUrl;
+			 </script>
+		<%}
+	}
 	
 }catch(Exception e){
 	e.printStackTrace();
 }
-
-
 %>
 <!DOCTYPE html>
 <html>
