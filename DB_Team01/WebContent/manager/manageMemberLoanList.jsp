@@ -165,7 +165,7 @@
 					%>
 					<td>
 						<button
-							onclick="location.href = 'acceptReturn.jsp?ISBN=<%=rs.getString("ISBN")%>&memberid=<%=memberid%>'">¹İ³³½ÂÀÎ</button>
+							onclick="location.href = 'acceptReturn.jsp?booknum=<%=rs.getString("bookNum")%>&memberid=<%=memberid%>&manangerid=<%=managerid %>&loandate=<%=rs.getString("loanDate")%>&idx=1'">¹İ³³½ÂÀÎ</button>
 					</td>
 					<%
 						}

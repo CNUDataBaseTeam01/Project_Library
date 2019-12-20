@@ -117,7 +117,7 @@
 					<td><%=rs.getString("loanDate").split("\\ ")[0]%></td>
 					<td><%=rs.getString("returnDate").split("\\ ")[0]%></td>
 					<td><button
-							onclick="location.href = 'acceptReturn.jsp?booknum=<%=rs.getString("BookNum")%>&memberid=<%=rs.getString("Id")%>&managerid=<%=managerid %>'">¹İ³³½ÂÀÎ</button></td>
+							onclick="location.href = 'acceptReturn.jsp?booknum=<%=rs.getString("BookNum")%>&memberid=<%=rs.getString("Id")%>&managerid=<%=managerid %>&loandate=<%=rs.getString("loanDate")%>&idx=2'">¹İ³³½ÂÀÎ</button></td>
 				</tr>
 			<%}
 			
